@@ -16,7 +16,7 @@ export default function Home() {
             Code for Health
           </h1>
           <p className="text-lg text-muted-foreground max-w-xl mx-auto">
-            Your starter is ready. Pick a template, run with the brief.
+            Built with care by <span className="font-semibold text-foreground">The Da Vinci Code</span> 🎨
           </p>
         </header>
 
@@ -42,10 +42,11 @@ export default function Home() {
           </Link>
         </section>
 
-        <section className="text-center text-sm text-muted-foreground space-y-2 pt-8">
-          <p>Edit <code className="bg-muted px-1.5 py-0.5 rounded">CLAUDE.md</code> to brief Claude on your specific topic.</p>
-          <p>All templates live in <code className="bg-muted px-1.5 py-0.5 rounded">src/components/templates/</code></p>
-        </section>
+        <footer className="text-center text-sm text-muted-foreground pt-8 border-t">
+          <p className="pt-4">
+            <span className="font-medium">Team: The Da Vinci Code</span> · Code for Health · Vibe Coding Hackathon 2026
+          </p>
+        </footer>
       </main>
     </div>
   );
