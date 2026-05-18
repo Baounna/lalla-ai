@@ -15,6 +15,8 @@ export function Header() {
     { href: "/check", label: t.nav.check },
     { href: "/quiz", label: t.nav.quiz },
     { href: "/learn", label: t.nav.learn },
+    { href: "/doctors", label: t.nav.doctors },
+    { href: "/reminder", label: t.nav.reminder },
   ];
 
   return (

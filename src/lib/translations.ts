@@ -4,7 +4,7 @@ type Translation = {
   appName: string;
   tagline: string;
   hero: { title: string; subtitle: string; cta: string; learn: string };
-  nav: { home: string; chat: string; check: string; quiz: string; learn: string };
+  nav: { home: string; chat: string; check: string; quiz: string; learn: string; doctors: string; reminder: string };
   features: {
     chat: { title: string; desc: string };
     check: { title: string; desc: string };
@@ -51,6 +51,26 @@ type Translation = {
   };
   common: { backHome: string; important: string; disclaimer: string };
   footer: string;
+  reminder: {
+    title: string;
+    subtitle: string;
+    cardTitle: string;
+    cardDesc: string;
+    enable: string;
+    enabled: string;
+    next: string;
+    permission: string;
+    saveDate: string;
+    daySelector: string;
+  };
+  doctors: {
+    title: string;
+    subtitle: string;
+    nationalHotline: string;
+    findNear: string;
+    callNow: string;
+    centers: { name: string; city: string; phone: string; address: string }[];
+  };
 };
 
 export const translations: Record<Lang, Translation> = {
@@ -69,6 +89,8 @@ export const translations: Record<Lang, Translation> = {
       check: "الفحص الذاتي",
       quiz: "اختبار المخاطر",
       learn: "تعلمي",
+      doctors: "طبيبة",
+      reminder: "تذكير",
     },
     features: {
       chat: {
@@ -224,6 +246,33 @@ export const translations: Record<Lang, Translation> = {
       disclaimer: "هاد التطبيق تعليمي. ماكيعوضش الطبيب.",
     },
     footer: "صنعت بحب من طرف فريق The Da Vinci Code · Vibe Coding Hackathon 2026",
+    reminder: {
+      title: "تذكير شهري",
+      subtitle: "كي تنسايش الفحص الذاتي، خلي لالة تذكرك",
+      cardTitle: "فعّلي التذكير الشهري",
+      cardDesc: "غادي نذكرك كل شهر باش تديري الفحص الذاتي. التوقيت الأمثل: أسبوع واحد بعد بداية الدورة.",
+      enable: "فعّلي التذكير",
+      enabled: "التذكير مفعل ✓",
+      next: "التذكير القادم:",
+      permission: "للأسف، خاص الإذن من المتصفح",
+      saveDate: "احفظي التاريخ",
+      daySelector: "اختاري اليوم ديال الفحص ف الشهر:",
+    },
+    doctors: {
+      title: "مراكز علاج السرطان",
+      subtitle: "أهم مراكز الأورام ف المغرب",
+      nationalHotline: "الخط الوطني · مؤسسة لالة سلمى",
+      findNear: "اختاري المدينة ديالك",
+      callNow: "اتصلي",
+      centers: [
+        { name: "المعهد الوطني للأنكولوجيا", city: "الرباط", phone: "0537687173", address: "الرباط - حي الرياض" },
+        { name: "مركز محمد السادس لعلاج السرطان", city: "الدار البيضاء", phone: "0522482020", address: "الدار البيضاء - عين الشق" },
+        { name: "مركز الأنكولوجيا الجامعي", city: "فاس", phone: "0535619100", address: "فاس - المركز الاستشفائي الحسن الثاني" },
+        { name: "مركز محمد السادس للأنكولوجيا", city: "مراكش", phone: "0524300700", address: "مراكش - حي الإزدهار" },
+        { name: "مركز الحسن الثاني لعلاج السرطان", city: "طنجة", phone: "0539393939", address: "طنجة - المركز الاستشفائي" },
+        { name: "مركز الأنكولوجيا", city: "وجدة", phone: "0536500666", address: "وجدة - المركز الاستشفائي" },
+      ],
+    },
   },
   fr: {
     appName: "Lalla AI",
@@ -240,6 +289,8 @@ export const translations: Record<Lang, Translation> = {
       check: "Auto-examen",
       quiz: "Évaluation",
       learn: "Apprendre",
+      doctors: "Médecin",
+      reminder: "Rappel",
     },
     features: {
       chat: {
@@ -395,6 +446,33 @@ export const translations: Record<Lang, Translation> = {
       disclaimer: "Cette application est éducative. Elle ne remplace pas un médecin.",
     },
     footer: "Fait avec amour par l'équipe The Da Vinci Code · Vibe Coding Hackathon 2026",
+    reminder: {
+      title: "Rappel mensuel",
+      subtitle: "Pour ne jamais oublier votre auto-examen, laissez Lalla vous rappeler",
+      cardTitle: "Activez le rappel mensuel",
+      cardDesc: "Nous vous rappellerons chaque mois de faire votre auto-examen. Idéalement, une semaine après le début des règles.",
+      enable: "Activer le rappel",
+      enabled: "Rappel activé ✓",
+      next: "Prochain rappel :",
+      permission: "Désolée, autorisation du navigateur requise",
+      saveDate: "Enregistrer la date",
+      daySelector: "Choisissez le jour de l'examen dans le mois :",
+    },
+    doctors: {
+      title: "Centres de cancérologie",
+      subtitle: "Principaux centres d'oncologie au Maroc",
+      nationalHotline: "Ligne nationale · Fondation Lalla Salma",
+      findNear: "Choisissez votre ville",
+      callNow: "Appeler",
+      centers: [
+        { name: "Institut National d'Oncologie", city: "Rabat", phone: "0537687173", address: "Rabat - Hay Riad" },
+        { name: "Centre Mohammed VI Cancérologie", city: "Casablanca", phone: "0522482020", address: "Casablanca - Aïn Chock" },
+        { name: "Centre d'Oncologie CHU", city: "Fès", phone: "0535619100", address: "Fès - CHU Hassan II" },
+        { name: "Centre Mohammed VI Oncologie", city: "Marrakech", phone: "0524300700", address: "Marrakech - Hay Izdihar" },
+        { name: "Centre Hassan II Cancer", city: "Tanger", phone: "0539393939", address: "Tanger - CHU" },
+        { name: "Centre d'Oncologie", city: "Oujda", phone: "0536500666", address: "Oujda - CHU" },
+      ],
+    },
   },
 };
 

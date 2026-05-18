@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Heart, Shield, Users } from "lucide-react";
+import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Heart, Shield, Users, Building2, Bell } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
@@ -13,7 +13,25 @@ export default function Home() {
     { href: "/chat", icon: MessageCircle, color: "from-rose-500 to-pink-500", data: t.features.chat },
     { href: "/check", icon: ListChecks, color: "from-pink-500 to-fuchsia-500", data: t.features.check },
     { href: "/quiz", icon: ClipboardCheck, color: "from-fuchsia-500 to-purple-500", data: t.features.quiz },
-    { href: "/learn", icon: BookOpen, color: "from-purple-500 to-rose-500", data: t.features.learn },
+    { href: "/learn", icon: BookOpen, color: "from-purple-500 to-indigo-500", data: t.features.learn },
+    {
+      href: "/reminder",
+      icon: Bell,
+      color: "from-indigo-500 to-blue-500",
+      data: {
+        title: t.reminder.title,
+        desc: t.reminder.subtitle,
+      },
+    },
+    {
+      href: "/doctors",
+      icon: Building2,
+      color: "from-blue-500 to-rose-500",
+      data: {
+        title: t.doctors.title,
+        desc: t.doctors.subtitle,
+      },
+    },
   ];
 
   return (
@@ -44,7 +62,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="grid gap-4 sm:grid-cols-2">
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {features.map((f) => (
           <Link key={f.href} href={f.href}>
             <Card className="p-6 h-full hover:shadow-xl hover:-translate-y-1 transition-all border-rose-100 dark:border-rose-950 bg-white/80 dark:bg-zinc-900/80 backdrop-blur">
