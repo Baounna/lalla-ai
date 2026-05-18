@@ -15,6 +15,7 @@ export default function ChatPage() {
   const [input, setInput] = useState("");
   const [listening, setListening] = useState(false);
   const [voiceSupported, setVoiceSupported] = useState(false);
+  const [voiceError, setVoiceError] = useState<string | null>(null);
   const recognitionRef = useRef<{ stop: () => void; start: () => void } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { messages, sendMessage, status } = useChat();
@@ -29,16 +30,49 @@ export default function ChatPage() {
     setVoiceSupported(getSpeechRecognition() !== null);
   }, []);
 
-  function toggleVoice() {
+  async function toggleVoice() {
+    setVoiceError(null);
     const SR = getSpeechRecognition();
-    if (!SR) return;
+    if (!SR) {
+      setVoiceError(
+        lang === "ar"
+          ? "المتصفح ديالك ما كيدعمش الصوت. جربي Chrome ولا Safari."
+          : "Votre navigateur ne supporte pas la voix. Essayez Chrome ou Safari.",
+      );
+      return;
+    }
 
     if (listening) {
       recognitionRef.current?.stop();
       return;
     }
 
-    const rec = new SR();
+    try {
+      if (navigator.mediaDevices?.getUserMedia) {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        stream.getTracks().forEach((t) => t.stop());
+      }
+    } catch {
+      setVoiceError(
+        lang === "ar"
+          ? "ما عطيتيش الإذن للمايكروفون. شوفي الإعدادات."
+          : "Permission micro refusée. Vérifiez les réglages.",
+      );
+      return;
+    }
+
+    let rec;
+    try {
+      rec = new SR();
+    } catch {
+      setVoiceError(
+        lang === "ar"
+          ? "ما قدرناش نفعّلو الصوت. جربي Chrome."
+          : "Impossible d'activer la voix. Essayez Chrome.",
+      );
+      return;
+    }
+
     rec.continuous = false;
     rec.interimResults = true;
     rec.lang = langCode(lang);
@@ -58,8 +92,34 @@ export default function ChatPage() {
       setInput(finalText + interim);
     };
 
-    rec.onerror = () => {
+    rec.onerror = (e) => {
       setListening(false);
+      const errMap: Record<string, { ar: string; fr: string }> = {
+        "not-allowed": {
+          ar: "ما عطيتيش الإذن للمايكروفون.",
+          fr: "Permission micro refusée.",
+        },
+        "no-speech": {
+          ar: "ما سمعتش شي صوت. جربي تاني.",
+          fr: "Aucun son détecté. Réessayez.",
+        },
+        "network": {
+          ar: "خاص الإنترنت لخدمة الصوت. ولا المتصفح ديالك بلوكا الخدمة (Brave/Firefox).",
+          fr: "Connexion requise. Ou votre navigateur bloque (Brave/Firefox).",
+        },
+        "service-not-allowed": {
+          ar: "المتصفح بلوكا خدمة الصوت. جربي Chrome ولا Safari.",
+          fr: "Navigateur bloque le service vocal. Essayez Chrome ou Safari.",
+        },
+      };
+      const msg = errMap[e.error];
+      setVoiceError(
+        msg
+          ? msg[lang]
+          : lang === "ar"
+            ? `خطأ: ${e.error}. جربي Chrome.`
+            : `Erreur: ${e.error}. Essayez Chrome.`,
+      );
     };
 
     rec.onend = () => {
@@ -71,7 +131,15 @@ export default function ChatPage() {
     };
 
     recognitionRef.current = rec;
-    rec.start();
+    try {
+      rec.start();
+    } catch {
+      setVoiceError(
+        lang === "ar"
+          ? "ما قدرناش نبداو. جربي Chrome ولا Safari."
+          : "Impossible de démarrer. Essayez Chrome ou Safari.",
+      );
+    }
   }
 
   const suggestions =
@@ -209,6 +277,12 @@ export default function ChatPage() {
           </Button>
         </form>
       </Card>
+
+      {voiceError && (
+        <div className="mt-3 mx-auto max-w-md bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 text-amber-900 dark:text-amber-100 rounded-xl px-4 py-2 text-sm text-center">
+          🎤 {voiceError}
+        </div>
+      )}
 
       <p className="text-xs text-center text-muted-foreground mt-3 px-4">
         ⚠️ {t.chat.disclaimer}
