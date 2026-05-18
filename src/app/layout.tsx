@@ -1,33 +1,34 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Tajawal } from "next/font/google";
 import "./globals.css";
+import { LanguageProvider } from "@/lib/language";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+const tajawal = Tajawal({
+  weight: ["400", "500", "700", "900"],
+  subsets: ["arabic", "latin"],
+  variable: "--font-tajawal",
 });
 
 export const metadata: Metadata = {
-  title: "The Da Vinci Code · Code for Health",
-  description: "Vibe Coding Hackathon 2026 — health AI by The Da Vinci Code",
+  title: "Lalla AI · صحة الثدي · The Da Vinci Code",
+  description:
+    "تطبيق ذكي للتوعية بصرطان الثدي والفحص الذاتي بالدارجة - Application IA pour la sensibilisation au cancer du sein",
 };
 
 export default function RootLayout({
   children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="ar" dir="rtl" className={`${tajawal.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col font-sans bg-gradient-to-br from-rose-50 via-white to-pink-50 dark:from-zinc-950 dark:via-black dark:to-zinc-900">
+        <LanguageProvider>
+          <Header />
+          <main className="flex-1">{children}</main>
+          <Footer />
+        </LanguageProvider>
+      </body>
     </html>
   );
 }
