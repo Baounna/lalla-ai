@@ -12,7 +12,7 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://vibehack-nine.vercel.app"),
+  metadataBase: new URL("https://lalla-ai.vercel.app"),
   title: {
     default: "Lalla AI · صحة الثدي · The Da Vinci Code",
     template: "%s · Lalla AI",

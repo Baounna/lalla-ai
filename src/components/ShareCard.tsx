@@ -6,7 +6,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Share2, Copy, Check } from "lucide-react";
 
-const SITE_URL = "https://vibehack-nine.vercel.app";
+const SITE_URL = "https://lalla-ai.vercel.app";
 
 export function ShareCard() {
   const { t, lang } = useLang();

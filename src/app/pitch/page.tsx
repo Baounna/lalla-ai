@@ -196,7 +196,7 @@ export default function PitchPage() {
         <div className="mt-10 pt-6 border-t border-white/20 text-sm text-rose-50">
           <p className="font-semibold">{t.pitch.badges.team}</p>
           <p className="opacity-80 mt-1">{t.pitch.badges.hackathon}</p>
-          <p className="font-mono text-xs mt-2 opacity-70">vibehack-nine.vercel.app</p>
+          <p className="font-mono text-xs mt-2 opacity-70">lalla-ai.vercel.app</p>
         </div>
       </section>
 
