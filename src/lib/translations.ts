@@ -66,6 +66,31 @@ type Translation = {
     nativeMessage: string;
     nativeText: string;
   };
+  architecture: {
+    title: string;
+    subtitle: string;
+    backToPitch: string;
+    arch: {
+      kicker: string;
+      title: string;
+      desc: string;
+      layers: { name: string; tech: string; role: string }[];
+    };
+    usecase: {
+      kicker: string;
+      title: string;
+      desc: string;
+      actor: string;
+      cases: string[];
+    };
+    sequence: {
+      kicker: string;
+      title: string;
+      desc: string;
+      actors: string[];
+      steps: { from: number; to: number; label: string }[];
+    };
+  };
   pitch: {
     title: string;
     subtitle: string;
@@ -335,6 +360,51 @@ export const translations: Record<Lang, Translation> = {
       copied: "تنسخ ✓",
       nativeMessage: "شاركي لالة AI",
       nativeText: "ختي، هاد التطبيق كيعاون النساء يفهمو صحة الثدي بالدارجة. جربيه:",
+    },
+    architecture: {
+      title: "هندسة المشروع",
+      subtitle: "كيفاش بنينا لالة AI - 3 مخططات",
+      backToPitch: "← رجعي للعرض",
+      arch: {
+        kicker: "01 · المعمارية العامة",
+        title: "3 طبقات بسيطة",
+        desc: "البنية كاتفصل بين الواجهة، الخادم، والذكاء الاصطناعي. كل طبقة عندها دور محدد.",
+        layers: [
+          { name: "المستخدمة", tech: "متصفح (موبايل أو لابتوب)", role: "كتشوف الواجهة بالدارجة" },
+          { name: "الواجهة الأمامية", tech: "Next.js 16 + React + Tailwind", role: "صفحات تفاعلية، RTL، ثنائية اللغة" },
+          { name: "الخادم", tech: "API Routes (/api/chat, /api/quiz)", role: "كيضيف system prompt وكيتصل بـ Gemini" },
+          { name: "الذكاء الاصطناعي", tech: "Google Gemini 2.5 Flash", role: "كيولد الأجوبة بالدارجة" },
+        ],
+      },
+      usecase: {
+        kicker: "02 · حالات الاستعمال",
+        title: "أش تقدر تدير المستخدمة",
+        desc: "حددنا 7 حالات استعمال رئيسية للنساء المغربيات.",
+        actor: "امرأة مغربية",
+        cases: [
+          "تهضر مع لالة (AI)",
+          "تدير الفحص الذاتي",
+          "تقيم مخاطرها",
+          "تقرا معلومات صحية",
+          "تفعل تذكير شهري",
+          "تلقا مركز قريب منها",
+          "تشارك على واتساب",
+        ],
+      },
+      sequence: {
+        kicker: "03 · مخطط التسلسل",
+        title: "كيفاش كاتدير محادثة واحدة",
+        desc: "هاد المخطط كيوضح أش كيوقع منين كتسول المستخدمة سؤال للالة.",
+        actors: ["مستخدمة", "متصفح", "الخادم", "Gemini"],
+        steps: [
+          { from: 0, to: 1, label: "كتكتب سؤال" },
+          { from: 1, to: 2, label: "POST /api/chat" },
+          { from: 2, to: 3, label: "+ system prompt (كوني لالة)" },
+          { from: 3, to: 2, label: "← stream النص" },
+          { from: 2, to: 1, label: "← قطع stream" },
+          { from: 1, to: 0, label: "كتشوف الجواب" },
+        ],
+      },
     },
     pitch: {
       title: "لالة AI",
@@ -653,6 +723,51 @@ export const translations: Record<Lang, Translation> = {
       copied: "Copié ✓",
       nativeMessage: "Partagez Lalla AI",
       nativeText: "Cette app aide les femmes à mieux comprendre leur santé mammaire, en darija. Essayez-la :",
+    },
+    architecture: {
+      title: "Architecture du projet",
+      subtitle: "Comment nous avons conçu Lalla AI — 3 diagrammes",
+      backToPitch: "← Retour à la présentation",
+      arch: {
+        kicker: "01 · Architecture globale",
+        title: "3 couches simples",
+        desc: "L'architecture sépare la présentation, le serveur et l'IA. Chaque couche a une responsabilité claire.",
+        layers: [
+          { name: "Utilisatrice", tech: "Navigateur (mobile ou laptop)", role: "Voit l'interface en darija" },
+          { name: "Frontend", tech: "Next.js 16 + React + Tailwind", role: "Pages interactives, RTL, bilingue" },
+          { name: "Backend", tech: "API Routes (/api/chat, /api/quiz)", role: "Ajoute le system prompt et appelle Gemini" },
+          { name: "Intelligence Artificielle", tech: "Google Gemini 2.5 Flash", role: "Génère les réponses en darija" },
+        ],
+      },
+      usecase: {
+        kicker: "02 · Cas d'utilisation",
+        title: "Ce que peut faire l'utilisatrice",
+        desc: "Nous avons identifié 7 cas d'utilisation principaux pour les femmes marocaines.",
+        actor: "Femme marocaine",
+        cases: [
+          "Parler à Lalla (IA)",
+          "Faire l'auto-examen",
+          "Évaluer son risque",
+          "Lire les informations santé",
+          "Activer un rappel mensuel",
+          "Trouver un centre proche",
+          "Partager sur WhatsApp",
+        ],
+      },
+      sequence: {
+        kicker: "03 · Diagramme de séquence",
+        title: "Comment se déroule une conversation",
+        desc: "Ce diagramme montre ce qui se passe quand l'utilisatrice envoie un message à Lalla.",
+        actors: ["Utilisatrice", "Navigateur", "Serveur", "Gemini"],
+        steps: [
+          { from: 0, to: 1, label: "écrit un message" },
+          { from: 1, to: 2, label: "POST /api/chat" },
+          { from: 2, to: 3, label: "+ system prompt (sois Lalla)" },
+          { from: 3, to: 2, label: "← stream texte" },
+          { from: 2, to: 1, label: "← chunks stream" },
+          { from: 1, to: 0, label: "voit la réponse" },
+        ],
+      },
     },
     pitch: {
       title: "Lalla AI",

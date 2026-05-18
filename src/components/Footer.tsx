@@ -14,13 +14,23 @@ export function Footer() {
         <span>{t.footer}</span>
       </p>
       <p className="text-xs opacity-70">{t.common.disclaimer}</p>
-      <Link
-        href="/pitch"
-        className="inline-flex items-center gap-1.5 text-xs text-rose-600 dark:text-rose-300 hover:underline"
-      >
-        <Presentation className="h-3.5 w-3.5" />
-        {lang === "ar" ? "شوفي العرض التقديمي" : "Voir la présentation"}
-      </Link>
+      <div className="flex items-center justify-center gap-4 flex-wrap text-xs">
+        <Link
+          href="/pitch"
+          className="inline-flex items-center gap-1.5 text-rose-600 dark:text-rose-300 hover:underline"
+        >
+          <Presentation className="h-3.5 w-3.5" />
+          {lang === "ar" ? "العرض التقديمي" : "Présentation"}
+        </Link>
+        <span className="opacity-40">·</span>
+        <Link
+          href="/architecture"
+          className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-300 hover:underline"
+        >
+          <Presentation className="h-3.5 w-3.5" />
+          {lang === "ar" ? "الهندسة" : "Architecture"}
+        </Link>
+      </div>
     </footer>
   );
 }
