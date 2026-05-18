@@ -66,6 +66,55 @@ type Translation = {
     nativeMessage: string;
     nativeText: string;
   };
+  pitch: {
+    title: string;
+    subtitle: string;
+    download: string;
+    badges: {
+      hackathon: string;
+      team: string;
+      theme: string;
+    };
+    problem: {
+      kicker: string;
+      title: string;
+      stats: { value: string; label: string }[];
+      body: string;
+    };
+    solution: {
+      kicker: string;
+      title: string;
+      body: string;
+      pillars: { icon: string; title: string; desc: string }[];
+    };
+    features: {
+      kicker: string;
+      title: string;
+      list: { num: string; title: string; desc: string }[];
+    };
+    innovation: {
+      kicker: string;
+      title: string;
+      points: { icon: string; title: string; desc: string }[];
+    };
+    impact: {
+      kicker: string;
+      title: string;
+      body: string;
+      metrics: { value: string; label: string }[];
+    };
+    tech: {
+      kicker: string;
+      title: string;
+      list: string[];
+    };
+    closing: {
+      kicker: string;
+      title: string;
+      body: string;
+      cta: string;
+    };
+  };
   reminder: {
     title: string;
     subtitle: string;
@@ -279,6 +328,88 @@ export const translations: Record<Lang, Translation> = {
       copied: "تنسخ ✓",
       nativeMessage: "شاركي لالة AI",
       nativeText: "ختي، هاد التطبيق كيعاون النساء يفهمو صحة الثدي بالدارجة. جربيه:",
+    },
+    pitch: {
+      title: "لالة AI",
+      subtitle: "كود من أجل الصحة، بُني من أجل التأثير",
+      download: "حملي الـ PDF",
+      badges: {
+        hackathon: "Vibe Coding Hackathon 2026",
+        team: "فريق The Da Vinci Code",
+        theme: "Code for Health · Build for Impact",
+      },
+      problem: {
+        kicker: "المشكلة",
+        title: "ف المغرب، النساء كيموتو لأن المعلومة ما كاتوصلش",
+        stats: [
+          { value: "11K+", label: "حالة جديدة كل عام" },
+          { value: "36%", label: "من سرطانات النساء" },
+          { value: "70%", label: "كيتم تشخيصهم متأخر" },
+        ],
+        body: "سرطان الثدي كاينقا بزاف ف المغرب. لكن المشكلة ماشي العلاج، المشكلة هي أن المعلومة ما كاتوصلش للنساء بطريقة سهلة. أغلب التطبيقات بالفرنسية ولا الإنجليزية، والمعلومات صعيبة. النتيجة: 7 من كل 10 نساء كيكتشفو السرطان متأخر، فاش يولي العلاج صعيب.",
+      },
+      solution: {
+        kicker: "الحل ديالنا",
+        title: "لالة AI - صاحبتك الرقمية بالدارجة",
+        body: "لالة ماشي تطبيق طبي بارد، هي صاحبة دافئة كتهضر معاك بالدارجة، كأنها أختك الكبيرة. كتعاونك تفهمي صحتك، تديري الفحص الذاتي، وتعرفي إيمتا خاصك تشوفي الطبيبة - كلشي ف مكان واحد، بدون خجل، بدون تعقيد.",
+        pillars: [
+          { icon: "🇲🇦", title: "بالدارجة أولاً", desc: "اللغة اللي كتهضرها كل يوم" },
+          { icon: "🌸", title: "بحس ثقافي", desc: "احترام للحياء والخصوصية" },
+          { icon: "🤖", title: "ذكاء اصطناعي", desc: "Gemini AI كيجاوبك بسرعة" },
+          { icon: "🔒", title: "خصوصية كاملة", desc: "معلوماتك ما كاتنخزنش" },
+        ],
+      },
+      features: {
+        kicker: "الميزات الرئيسية",
+        title: "كلشي اللي تحتاجي ف تطبيق واحد",
+        list: [
+          { num: "01", title: "هضري مع لالة (AI)", desc: "محادثة بالدارجة مع AI، بإدخال صوتي، تجاوبك على كل أسئلتك" },
+          { num: "02", title: "الفحص الذاتي", desc: "7 خطوات بسيطة مع شرح وصور، باش تديري الفحص فالدار" },
+          { num: "03", title: "اختبار المخاطر", desc: "7 أسئلة + AI كيقيم مخاطرك ويعطيك نصائح خاصة بيك" },
+          { num: "04", title: "تعلمي وتوعّي", desc: "معلومات موثوقة، أفكار غالطة وحقائق، إحصائيات مغربية" },
+          { num: "05", title: "تذكير شهري", desc: "إضافة للكالنضار (Google/Apple) باش متنسايش الفحص" },
+          { num: "06", title: "مراكز قريبة", desc: "أهم مراكز الأنكولوجيا فالمغرب، اتصال مباشر بكليك" },
+        ],
+      },
+      innovation: {
+        kicker: "الابتكار ديالنا",
+        title: "ما عملاتوش الفرق التانية",
+        points: [
+          { icon: "🎤", title: "الصوت بالدارجة", desc: "أول تطبيق صحي كيفهم الدارجة بالصوت - مهم للنساء اللي ماكيقراوش" },
+          { icon: "💬", title: "مشاركة واتساب", desc: "كل مستخدمة تقدر تبعث لالة لختها، أمها، صاحبتها بكليك واحد" },
+          { icon: "📅", title: "تكامل مع التقويم", desc: "تذكير دائم، ماشي إشعار مؤقت" },
+          { icon: "🌐", title: "بدون تسجيل", desc: "ولا حتى رقم تليفون مطلوب - الخصوصية أولاً" },
+        ],
+      },
+      impact: {
+        kicker: "التأثير",
+        title: "تطبيق يقدر ينقد حياة",
+        body: "لالة موصولة لأي امرأة عندها سمارتفون فالمغرب. مجاني، بدون تسجيل، بالدارجة. هدفنا أن كل امرأة، حتى فالقرى، يكون عندها وصول لمعلومات صحية موثوقة بلغتها.",
+        metrics: [
+          { value: "100%", label: "مجاني للاستعمال" },
+          { value: "0", label: "بيانات شخصية مطلوبة" },
+          { value: "2", label: "لغة (دارجة + فرنسية)" },
+          { value: "∞", label: "إمكانية الانتشار" },
+        ],
+      },
+      tech: {
+        kicker: "التكنولوجيا",
+        title: "بُني بأدوات حديثة",
+        list: [
+          "Next.js 16 + TypeScript + Tailwind CSS v4",
+          "Google Gemini 2.5 Flash (AI - Free Tier)",
+          "Web Speech API (الإدخال الصوتي)",
+          "Calendar ICS (التكامل مع التقويم)",
+          "Vercel (نشر مع HTTPS مجاناً)",
+          "open source، الكود متاح للجميع",
+        ],
+      },
+      closing: {
+        kicker: "الخلاصة",
+        title: "لالة AI = أمل بالدارجة",
+        body: "أحياناً، الفرق بين الحياة والموت هو كلمة بسيطة، بلغة مفهومة، ف الوقت المناسب. لالة AI كاتقدم هاد الكلمة. لكل أم، لكل أخت، لكل صديقة.",
+        cta: "جربي لالة دابا",
+      },
     },
     reminder: {
       title: "تذكير شهري",
@@ -498,6 +629,88 @@ export const translations: Record<Lang, Translation> = {
       copied: "Copié ✓",
       nativeMessage: "Partagez Lalla AI",
       nativeText: "Cette app aide les femmes à mieux comprendre leur santé mammaire, en darija. Essayez-la :",
+    },
+    pitch: {
+      title: "Lalla AI",
+      subtitle: "Code pour la santé, conçu pour l'impact",
+      download: "Télécharger en PDF",
+      badges: {
+        hackathon: "Vibe Coding Hackathon 2026",
+        team: "Équipe The Da Vinci Code",
+        theme: "Code for Health · Build for Impact",
+      },
+      problem: {
+        kicker: "Le Problème",
+        title: "Au Maroc, des femmes meurent parce que l'information ne les atteint pas",
+        stats: [
+          { value: "11K+", label: "nouveaux cas par an" },
+          { value: "36%", label: "des cancers chez les femmes" },
+          { value: "70%", label: "diagnostiqués trop tard" },
+        ],
+        body: "Le cancer du sein est très répandu au Maroc. Mais le problème n'est pas le traitement — c'est que l'information n'atteint pas les femmes dans leur langue. La plupart des applications sont en français ou anglais, avec un langage médical complexe. Résultat : 7 femmes sur 10 sont diagnostiquées trop tard, quand le traitement devient difficile.",
+      },
+      solution: {
+        kicker: "Notre Solution",
+        title: "Lalla AI — Votre compagne digitale en darija",
+        body: "Lalla n'est pas une app médicale froide. C'est une compagne chaleureuse qui vous parle en darija, comme votre grande sœur. Elle vous aide à comprendre votre santé, à faire l'auto-examen, et à savoir quand consulter — le tout en un seul endroit, sans gêne, sans complexité.",
+        pillars: [
+          { icon: "🇲🇦", title: "Darija d'abord", desc: "La langue du quotidien" },
+          { icon: "🌸", title: "Sensibilité culturelle", desc: "Respect de la pudeur" },
+          { icon: "🤖", title: "Intelligence artificielle", desc: "Gemini AI répond instantanément" },
+          { icon: "🔒", title: "Confidentialité totale", desc: "Vos données ne sont pas stockées" },
+        ],
+      },
+      features: {
+        kicker: "Fonctionnalités",
+        title: "Tout ce dont vous avez besoin dans une seule app",
+        list: [
+          { num: "01", title: "Chat avec Lalla (IA)", desc: "Conversation en darija avec IA, entrée vocale, répond à toutes vos questions" },
+          { num: "02", title: "Auto-examen guidé", desc: "7 étapes simples avec explications visuelles, pour faire l'examen chez vous" },
+          { num: "03", title: "Évaluation du risque", desc: "7 questions + IA qui évalue votre risque et donne des conseils personnalisés" },
+          { num: "04", title: "Sensibilisation", desc: "Informations fiables, mythes et vérités, statistiques marocaines" },
+          { num: "05", title: "Rappel mensuel", desc: "Intégration calendrier (Google/Apple) pour ne jamais oublier" },
+          { num: "06", title: "Centres à proximité", desc: "Principaux centres d'oncologie au Maroc, appel direct en un clic" },
+        ],
+      },
+      innovation: {
+        kicker: "Notre Innovation",
+        title: "Ce qui nous distingue",
+        points: [
+          { icon: "🎤", title: "Voix en darija", desc: "Première app santé qui comprend le darija à la voix — crucial pour les femmes analphabètes" },
+          { icon: "💬", title: "Partage WhatsApp", desc: "Chaque utilisatrice peut envoyer Lalla à sa sœur, mère, amie en un clic" },
+          { icon: "📅", title: "Intégration calendrier", desc: "Rappel permanent, pas une notification éphémère" },
+          { icon: "🌐", title: "Sans inscription", desc: "Aucun téléphone requis — confidentialité totale" },
+        ],
+      },
+      impact: {
+        kicker: "L'Impact",
+        title: "Une app qui peut sauver des vies",
+        body: "Lalla est accessible à toute femme avec un smartphone au Maroc. Gratuit, sans inscription, en darija. Notre objectif : que chaque femme, même dans les villages reculés, ait accès à des informations de santé fiables dans sa langue.",
+        metrics: [
+          { value: "100%", label: "Gratuit à l'usage" },
+          { value: "0", label: "Données personnelles requises" },
+          { value: "2", label: "Langues (darija + français)" },
+          { value: "∞", label: "Potentiel viral" },
+        ],
+      },
+      tech: {
+        kicker: "Technologie",
+        title: "Construit avec des outils modernes",
+        list: [
+          "Next.js 16 + TypeScript + Tailwind CSS v4",
+          "Google Gemini 2.5 Flash (IA - Free Tier)",
+          "Web Speech API (entrée vocale)",
+          "Calendar ICS (intégration calendrier)",
+          "Vercel (déploiement gratuit avec HTTPS)",
+          "Open source, code disponible publiquement",
+        ],
+      },
+      closing: {
+        kicker: "Conclusion",
+        title: "Lalla AI = L'espoir en darija",
+        body: "Parfois, la différence entre la vie et la mort, c'est un mot simple, dans une langue comprise, au bon moment. Lalla AI offre ce mot. Pour chaque mère, chaque sœur, chaque amie.",
+        cta: "Essayez Lalla maintenant",
+      },
     },
     reminder: {
       title: "Rappel mensuel",
