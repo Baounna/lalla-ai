@@ -57,6 +57,15 @@ type Translation = {
     warm: { title: string; desc: string };
     forWomen: { title: string; desc: string };
   };
+  share: {
+    title: string;
+    desc: string;
+    whatsapp: string;
+    copy: string;
+    copied: string;
+    nativeMessage: string;
+    nativeText: string;
+  };
   reminder: {
     title: string;
     subtitle: string;
@@ -261,6 +270,15 @@ export const translations: Record<Lang, Translation> = {
       privacy: { title: "الخصوصية أولاً", desc: "معلوماتك تبقى عندك" },
       warm: { title: "بحب وفهم", desc: "واجهة دافئة وبسيطة" },
       forWomen: { title: "للمغربيات", desc: "بالدارجة والفرنسية" },
+    },
+    share: {
+      title: "شاركي لالة مع اللي كتحبي",
+      desc: "إيلا عجبك التطبيق، شاركيه مع ختك، أمك، صاحبتك. المعلومة كتنقد حياة 💖",
+      whatsapp: "شاركي على واتساب",
+      copy: "نسخي الرابط",
+      copied: "تنسخ ✓",
+      nativeMessage: "شاركي لالة AI",
+      nativeText: "ختي، هاد التطبيق كيعاون النساء يفهمو صحة الثدي بالدارجة. جربيه:",
     },
     reminder: {
       title: "تذكير شهري",
@@ -471,6 +489,15 @@ export const translations: Record<Lang, Translation> = {
       privacy: { title: "Confidentialité", desc: "Vos données restent chez vous" },
       warm: { title: "Avec bienveillance", desc: "Interface chaleureuse et simple" },
       forWomen: { title: "Pour les Marocaines", desc: "En darija et en français" },
+    },
+    share: {
+      title: "Partagez Lalla avec celles que vous aimez",
+      desc: "Si l'app vous a aidée, partagez-la avec votre sœur, mère, amie. L'information sauve des vies 💖",
+      whatsapp: "Partager sur WhatsApp",
+      copy: "Copier le lien",
+      copied: "Copié ✓",
+      nativeMessage: "Partagez Lalla AI",
+      nativeText: "Cette app aide les femmes à mieux comprendre leur santé mammaire, en darija. Essayez-la :",
     },
     reminder: {
       title: "Rappel mensuel",

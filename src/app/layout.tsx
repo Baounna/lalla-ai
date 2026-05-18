@@ -12,9 +12,38 @@ const tajawal = Tajawal({
 });
 
 export const metadata: Metadata = {
-  title: "Lalla AI · صحة الثدي · The Da Vinci Code",
+  metadataBase: new URL("https://vibehack-nine.vercel.app"),
+  title: {
+    default: "Lalla AI · صحة الثدي · The Da Vinci Code",
+    template: "%s · Lalla AI",
+  },
   description:
-    "تطبيق ذكي للتوعية بصرطان الثدي والفحص الذاتي بالدارجة - Application IA pour la sensibilisation au cancer du sein",
+    "تطبيق ذكي للتوعية بسرطان الثدي والفحص الذاتي بالدارجة - Application IA pour la sensibilisation au cancer du sein chez les femmes marocaines",
+  keywords: [
+    "breast cancer",
+    "Morocco",
+    "darija",
+    "self-examination",
+    "AI",
+    "health",
+    "سرطان الثدي",
+    "الفحص الذاتي",
+    "صحة المرأة",
+  ],
+  authors: [{ name: "The Da Vinci Code" }],
+  openGraph: {
+    title: "Lalla AI · لالة AI",
+    description:
+      "تطبيق ذكي بالدارجة للتوعية بسرطان الثدي والفحص الذاتي للنساء المغربيات",
+    siteName: "Lalla AI",
+    locale: "ar_MA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Lalla AI · Code for Health",
+    description: "AI breast cancer awareness for Moroccan women, in Darija",
+  },
 };
 
 export default function RootLayout({

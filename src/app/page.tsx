@@ -5,6 +5,7 @@ import { useLang } from "@/lib/language";
 import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Heart, Shield, Users, Building2, Bell } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { ShareCard } from "@/components/ShareCard";
 
 export default function Home() {
   const { t } = useLang();
@@ -116,6 +117,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ShareCard />
     </div>
   );
 }
