@@ -16,15 +16,40 @@ export default function ChatPage() {
   const [listening, setListening] = useState(false);
   const [voiceSupported, setVoiceSupported] = useState(false);
   const [voiceError, setVoiceError] = useState<string | null>(null);
+  const [chatError, setChatError] = useState<string | null>(null);
   const recognitionRef = useRef<{ stop: () => void; start: () => void } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
-  const { messages, sendMessage, status } = useChat();
+  const { messages, sendMessage, status, regenerate, error } = useChat({
+    onError: (err) => {
+      const msg = err?.message || "";
+      if (msg.includes("quota") || msg.includes("rate") || msg.includes("limit")) {
+        setChatError(
+          lang === "ar"
+            ? "كاين زحمة دابا على لالة 🌸 صبري شي ثانية وعاودي. (الحد الشهري للاستعمال المجاني)"
+            : "Lalla est très demandée en ce moment 🌸 Attendez quelques secondes et réessayez. (Limite de l'usage gratuit)",
+        );
+      } else {
+        setChatError(
+          lang === "ar"
+            ? "وقع شي مشكل صغير. عاودي المحاولة."
+            : "Un petit souci. Réessayez.",
+        );
+      }
+    },
+  });
 
-  const isLoading = status === "submitted" || status === "streaming";
+  const isLoading = status === "submitted";
+  const isStreaming = status === "streaming";
+
+  useEffect(() => {
+    if (status === "ready" || status === "streaming") {
+      setChatError(null);
+    }
+  }, [status]);
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
-  }, [messages, isLoading]);
+  }, [messages, isLoading, isStreaming]);
 
   useEffect(() => {
     setVoiceSupported(getSpeechRecognition() !== null);
@@ -235,6 +260,28 @@ export default function ChatPage() {
               <div className="bg-rose-50 dark:bg-rose-950/40 rounded-2xl rounded-ss-sm px-4 py-3 flex items-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin text-rose-500" />
                 <span className="text-sm text-muted-foreground">{t.chat.thinking}</span>
+              </div>
+            </div>
+          )}
+
+          {chatError && (
+            <div className="flex gap-3">
+              <div className="w-9 h-9 rounded-full bg-amber-100 dark:bg-amber-900 flex items-center justify-center text-amber-600 dark:text-amber-300 flex-shrink-0">
+                ⚠️
+              </div>
+              <div className="bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-900 rounded-2xl rounded-ss-sm px-4 py-3 max-w-[85%]">
+                <p className="text-sm text-amber-900 dark:text-amber-100 mb-2">{chatError}</p>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  onClick={() => {
+                    setChatError(null);
+                    regenerate({ body: { lang } });
+                  }}
+                  className="rounded-full text-xs h-7"
+                >
+                  {lang === "ar" ? "عاودي المحاولة" : "Réessayer"}
+                </Button>
               </div>
             </div>
           )}

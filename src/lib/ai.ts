@@ -12,6 +12,6 @@ export function gemini() {
   return _gemini;
 }
 
-export const geminiFlash = google("gemini-2.5-flash");
+export const geminiFlash = google("gemini-2.5-flash-lite");
 export const geminiPro = google("gemini-2.5-pro");
-export const geminiFlashLite = google("gemini-2.5-flash-lite");
+export const geminiFlashFull = google("gemini-2.5-flash");
