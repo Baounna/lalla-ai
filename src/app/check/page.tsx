@@ -107,20 +107,26 @@ export default function CheckPage() {
             : "Vous avez terminé l'auto-examen. Rappelez-vous : refaites-le chaque mois."}
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-4">
-          <Button
-            onClick={() => {
-              setStep(-1);
-              setCompleted([]);
-            }}
-            className="bg-rose-500 hover:bg-rose-600 rounded-full px-6"
-          >
-            {lang === "ar" ? "عاودي" : "Refaire"}
-          </Button>
+          <Link href="/reminder">
+            <Button className="bg-rose-500 hover:bg-rose-600 rounded-full px-6 shadow-lg">
+              {lang === "ar" ? "🔔 فعّلي التذكير الشهري" : "🔔 Activer le rappel mensuel"}
+            </Button>
+          </Link>
           <Link href="/chat">
             <Button variant="outline" className="rounded-full px-6">
               {lang === "ar" ? "سولي لالة" : "Demander à Lalla"}
             </Button>
           </Link>
+          <Button
+            variant="ghost"
+            onClick={() => {
+              setStep(-1);
+              setCompleted([]);
+            }}
+            className="rounded-full px-6"
+          >
+            {lang === "ar" ? "عاودي" : "Refaire"}
+          </Button>
         </div>
       </div>
     );

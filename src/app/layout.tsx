@@ -21,7 +21,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ar" dir="rtl" className={`${tajawal.variable} h-full antialiased`}>
+    <html lang="ar" dir="rtl" suppressHydrationWarning className={`${tajawal.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-gradient-to-br from-rose-50 via-white to-pink-50 dark:from-zinc-950 dark:via-black dark:to-zinc-900">
         <LanguageProvider>
           <Header />

@@ -149,6 +149,13 @@ export default function QuizPage() {
         </Card>
 
         <div className="flex flex-wrap gap-3 justify-center pt-2">
+          {(result.urgent || result.level === "high") && (
+            <Link href="/doctors">
+              <Button className="bg-rose-600 hover:bg-rose-700 rounded-full shadow-lg">
+                {lang === "ar" ? "📞 شوفي طبيبة دابا" : "📞 Voir un médecin"}
+              </Button>
+            </Link>
+          )}
           <Link href="/chat">
             <Button className="bg-rose-500 hover:bg-rose-600 rounded-full">
               {lang === "ar" ? "هضري مع لالة" : "Parler à Lalla"}
@@ -157,6 +164,11 @@ export default function QuizPage() {
           <Link href="/check">
             <Button variant="outline" className="rounded-full">
               {lang === "ar" ? "الفحص الذاتي" : "Auto-examen"}
+            </Button>
+          </Link>
+          <Link href="/reminder">
+            <Button variant="outline" className="rounded-full">
+              {lang === "ar" ? "🔔 فعّلي التذكير" : "🔔 Activer le rappel"}
             </Button>
           </Link>
           <Button

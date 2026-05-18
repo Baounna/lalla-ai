@@ -51,6 +51,12 @@ type Translation = {
   };
   common: { backHome: string; important: string; disclaimer: string };
   footer: string;
+  stats: { cancers: string; survival: string; cases: string };
+  trust: {
+    privacy: { title: string; desc: string };
+    warm: { title: string; desc: string };
+    forWomen: { title: string; desc: string };
+  };
   reminder: {
     title: string;
     subtitle: string;
@@ -246,16 +252,26 @@ export const translations: Record<Lang, Translation> = {
       disclaimer: "هاد التطبيق تعليمي. ماكيعوضش الطبيب.",
     },
     footer: "صنعت بحب من طرف فريق The Da Vinci Code · Vibe Coding Hackathon 2026",
+    stats: {
+      cancers: "من السرطانات عند النساء المغربيات",
+      survival: "نسبة الشفاء مع الكشف المبكر",
+      cases: "حالة جديدة كل عام ف المغرب",
+    },
+    trust: {
+      privacy: { title: "الخصوصية أولاً", desc: "معلوماتك تبقى عندك" },
+      warm: { title: "بحب وفهم", desc: "واجهة دافئة وبسيطة" },
+      forWomen: { title: "للمغربيات", desc: "بالدارجة والفرنسية" },
+    },
     reminder: {
       title: "تذكير شهري",
       subtitle: "كي تنسايش الفحص الذاتي، خلي لالة تذكرك",
-      cardTitle: "فعّلي التذكير الشهري",
-      cardDesc: "غادي نذكرك كل شهر باش تديري الفحص الذاتي. التوقيت الأمثل: أسبوع واحد بعد بداية الدورة.",
-      enable: "فعّلي التذكير",
-      enabled: "التذكير مفعل ✓",
+      cardTitle: "اعدادات التذكير",
+      cardDesc: "احفظي التاريخ ف التقويم ديالك (Google/Apple) باش تتوصلي بتذكير شهري دائم. ولا فعلي إشعار المتصفح كتجربة سريعة.",
+      enable: "إشعار تجريبي",
+      enabled: "تم إرسال الإشعار ✓",
       next: "التذكير القادم:",
       permission: "للأسف، خاص الإذن من المتصفح",
-      saveDate: "احفظي التاريخ",
+      saveDate: "حملي التذكير للتقويم",
       daySelector: "اختاري اليوم ديال الفحص ف الشهر:",
     },
     doctors: {
@@ -446,16 +462,26 @@ export const translations: Record<Lang, Translation> = {
       disclaimer: "Cette application est éducative. Elle ne remplace pas un médecin.",
     },
     footer: "Fait avec amour par l'équipe The Da Vinci Code · Vibe Coding Hackathon 2026",
+    stats: {
+      cancers: "des cancers chez les femmes marocaines",
+      survival: "taux de guérison avec détection précoce",
+      cases: "nouveaux cas par an au Maroc",
+    },
+    trust: {
+      privacy: { title: "Confidentialité", desc: "Vos données restent chez vous" },
+      warm: { title: "Avec bienveillance", desc: "Interface chaleureuse et simple" },
+      forWomen: { title: "Pour les Marocaines", desc: "En darija et en français" },
+    },
     reminder: {
       title: "Rappel mensuel",
       subtitle: "Pour ne jamais oublier votre auto-examen, laissez Lalla vous rappeler",
-      cardTitle: "Activez le rappel mensuel",
-      cardDesc: "Nous vous rappellerons chaque mois de faire votre auto-examen. Idéalement, une semaine après le début des règles.",
-      enable: "Activer le rappel",
-      enabled: "Rappel activé ✓",
+      cardTitle: "Configurer le rappel",
+      cardDesc: "Téléchargez l'événement dans votre calendrier (Google/Apple) pour un rappel mensuel permanent. Ou activez une notification de test rapide.",
+      enable: "Notification test",
+      enabled: "Notification envoyée ✓",
       next: "Prochain rappel :",
-      permission: "Désolée, autorisation du navigateur requise",
-      saveDate: "Enregistrer la date",
+      permission: "Autorisation du navigateur requise",
+      saveDate: "Télécharger dans le calendrier",
       daySelector: "Choisissez le jour de l'examen dans le mois :",
     },
     doctors: {

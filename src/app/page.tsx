@@ -80,15 +80,15 @@ export default function Home() {
         <div className="grid gap-6 md:grid-cols-3 text-center">
           <div>
             <div className="text-4xl md:text-5xl font-bold mb-2">36%</div>
-            <p className="text-rose-100">من السرطانات عند النساء المغربيات</p>
+            <p className="text-rose-100">{t.stats.cancers}</p>
           </div>
           <div>
             <div className="text-4xl md:text-5xl font-bold mb-2">+90%</div>
-            <p className="text-rose-100">نسبة الشفاء مع الكشف المبكر</p>
+            <p className="text-rose-100">{t.stats.survival}</p>
           </div>
           <div>
             <div className="text-4xl md:text-5xl font-bold mb-2">11K</div>
-            <p className="text-rose-100">حالة جديدة كل عام ف المغرب</p>
+            <p className="text-rose-100">{t.stats.cases}</p>
           </div>
         </div>
       </section>
@@ -97,22 +97,22 @@ export default function Home() {
         <div className="flex gap-3 items-start">
           <Shield className="h-6 w-6 text-rose-500 flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold">الخصوصية أولاً</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">معلوماتك تبقى عندك</p>
+            <h3 className="font-semibold">{t.trust.privacy.title}</h3>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.trust.privacy.desc}</p>
           </div>
         </div>
         <div className="flex gap-3 items-start">
           <Heart className="h-6 w-6 text-rose-500 flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold">بحب وفهم</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">واجهة دافئة وبسيطة</p>
+            <h3 className="font-semibold">{t.trust.warm.title}</h3>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.trust.warm.desc}</p>
           </div>
         </div>
         <div className="flex gap-3 items-start">
           <Users className="h-6 w-6 text-rose-500 flex-shrink-0 mt-1" />
           <div>
-            <h3 className="font-semibold">للمغربيات</h3>
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">بالدارجة والفرنسية</p>
+            <h3 className="font-semibold">{t.trust.forWomen.title}</h3>
+            <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.trust.forWomen.desc}</p>
           </div>
         </div>
       </section>

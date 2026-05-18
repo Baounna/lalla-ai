@@ -145,9 +145,17 @@ END:VCALENDAR`;
 
         <div className="flex flex-col sm:flex-row gap-3">
           <Button
+            onClick={downloadICS}
+            className="flex-1 bg-rose-500 hover:bg-rose-600 text-white rounded-full h-12"
+          >
+            <Calendar className="me-2 h-5 w-5" />
+            {t.reminder.saveDate}
+          </Button>
+          <Button
+            variant="outline"
             onClick={enable}
             disabled={enabled}
-            className="flex-1 bg-rose-500 hover:bg-rose-600 text-white rounded-full h-12"
+            className="flex-1 rounded-full h-12 border-rose-200 hover:bg-rose-50 dark:hover:bg-rose-950"
           >
             {enabled ? (
               <>
@@ -160,14 +168,6 @@ END:VCALENDAR`;
                 {t.reminder.enable}
               </>
             )}
-          </Button>
-          <Button
-            variant="outline"
-            onClick={downloadICS}
-            className="flex-1 rounded-full h-12 border-rose-200 hover:bg-rose-50 dark:hover:bg-rose-950"
-          >
-            <Calendar className="me-2 h-5 w-5" />
-            {t.reminder.saveDate}
           </Button>
         </div>
 
