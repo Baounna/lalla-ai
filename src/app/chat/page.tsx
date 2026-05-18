@@ -2,16 +2,20 @@
 
 import { useChat } from "@ai-sdk/react";
 import { useState, useRef, useEffect } from "react";
-import { Send, Loader2, Heart, Sparkles } from "lucide-react";
+import { Send, Loader2, Heart, Sparkles, Mic, MicOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Card } from "@/components/ui/card";
 import ReactMarkdown from "react-markdown";
 import { useLang } from "@/lib/language";
+import { getSpeechRecognition, langCode } from "@/lib/speech";
 
 export default function ChatPage() {
   const { lang, t, dir } = useLang();
   const [input, setInput] = useState("");
+  const [listening, setListening] = useState(false);
+  const [voiceSupported, setVoiceSupported] = useState(false);
+  const recognitionRef = useRef<{ stop: () => void; start: () => void } | null>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
   const { messages, sendMessage, status } = useChat();
 
@@ -20,6 +24,55 @@ export default function ChatPage() {
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages, isLoading]);
+
+  useEffect(() => {
+    setVoiceSupported(getSpeechRecognition() !== null);
+  }, []);
+
+  function toggleVoice() {
+    const SR = getSpeechRecognition();
+    if (!SR) return;
+
+    if (listening) {
+      recognitionRef.current?.stop();
+      return;
+    }
+
+    const rec = new SR();
+    rec.continuous = false;
+    rec.interimResults = true;
+    rec.lang = langCode(lang);
+
+    let finalText = "";
+
+    rec.onresult = (e) => {
+      let interim = "";
+      for (let i = e.resultIndex; i < e.results.length; i++) {
+        const r = e.results[i][0];
+        if (e.results[i] && (e.results[i] as unknown as { isFinal: boolean }).isFinal) {
+          finalText += r.transcript;
+        } else {
+          interim += r.transcript;
+        }
+      }
+      setInput(finalText + interim);
+    };
+
+    rec.onerror = () => {
+      setListening(false);
+    };
+
+    rec.onend = () => {
+      setListening(false);
+    };
+
+    rec.onstart = () => {
+      setListening(true);
+    };
+
+    recognitionRef.current = rec;
+    rec.start();
+  }
 
   const suggestions =
     lang === "ar"
@@ -132,10 +185,21 @@ export default function ChatPage() {
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={t.chat.placeholder}
+            placeholder={listening ? (lang === "ar" ? "كنسمعك..." : "Je vous écoute...") : t.chat.placeholder}
             disabled={isLoading}
             className="rounded-full border-rose-200 focus-visible:ring-rose-400"
           />
+          {voiceSupported && (
+            <Button
+              type="button"
+              onClick={toggleVoice}
+              disabled={isLoading}
+              className={`rounded-full px-4 ${listening ? "bg-rose-600 animate-pulse" : "bg-pink-500 hover:bg-pink-600"}`}
+              title={lang === "ar" ? "تكلمي" : "Parler"}
+            >
+              {listening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
+            </Button>
+          )}
           <Button
             type="submit"
             disabled={isLoading || !input.trim()}
