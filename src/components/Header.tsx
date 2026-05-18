@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { Heart, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
+import { Logo } from "@/components/Logo";
 
 export function Header() {
   const { lang, setLang, t } = useLang();
@@ -23,7 +24,7 @@ export function Header() {
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-rose-100 dark:border-rose-950">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-          <Heart className="h-6 w-6 text-rose-500 fill-rose-500" />
+          <Logo size={32} />
           <span>{t.appName}</span>
         </Link>
 

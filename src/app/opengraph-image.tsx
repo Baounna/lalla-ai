@@ -42,18 +42,30 @@ export default function OGImage() {
 
         <div
           style={{
-            width: 140,
-            height: 140,
-            borderRadius: 32,
+            width: 160,
+            height: 160,
+            borderRadius: 36,
             background: "linear-gradient(135deg, #f43f5e 0%, #ec4899 100%)",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
             marginBottom: 30,
             boxShadow: "0 20px 40px rgba(244, 63, 94, 0.4)",
+            position: "relative",
           }}
         >
-          <div style={{ fontSize: 80 }}>❤️</div>
+          <div
+            style={{
+              fontSize: 130,
+              color: "white",
+              fontWeight: 900,
+              fontFamily: "serif",
+              lineHeight: 1,
+              marginTop: -8,
+            }}
+          >
+            ل
+          </div>
         </div>
 
         <div

@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Heart, Shield, Users, Building2, Bell } from "lucide-react";
+import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShareCard } from "@/components/ShareCard";
+import { Logo } from "@/components/Logo";
 
 export default function Home() {
   const { t } = useLang();
@@ -38,8 +39,11 @@ export default function Home() {
   return (
     <div className="max-w-6xl mx-auto px-4 py-8 md:py-16 space-y-16">
       <section className="text-center space-y-6">
+        <div className="flex justify-center">
+          <Logo size={72} className="drop-shadow-xl" />
+        </div>
         <div className="inline-flex items-center gap-2 bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-200 px-4 py-1.5 rounded-full text-sm font-medium">
-          <Heart className="h-4 w-4 fill-rose-500 text-rose-500" />
+          <Sparkles className="h-4 w-4" />
           {t.tagline}
         </div>
         <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600 bg-clip-text text-transparent leading-tight">
@@ -103,7 +107,7 @@ export default function Home() {
           </div>
         </div>
         <div className="flex gap-3 items-start">
-          <Heart className="h-6 w-6 text-rose-500 flex-shrink-0 mt-1" />
+          <Sparkles className="h-6 w-6 text-rose-500 flex-shrink-0 mt-1" />
           <div>
             <h3 className="font-semibold">{t.trust.warm.title}</h3>
             <p className="text-sm text-zinc-600 dark:text-zinc-400">{t.trust.warm.desc}</p>
