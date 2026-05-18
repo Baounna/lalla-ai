@@ -15,6 +15,8 @@ import {
   TrendingUp,
   Printer,
   ArrowRight,
+  Compass,
+  ChevronRight,
 } from "lucide-react";
 
 export default function PitchPage() {
@@ -101,6 +103,45 @@ export default function PitchPage() {
               </div>
             </div>
           ))}
+        </div>
+      </Section>
+
+      <Section icon={Compass} kicker={t.pitch.conception.kicker} accent="pink">
+        <h2 className="text-3xl md:text-4xl font-bold mb-4 leading-tight">
+          {t.pitch.conception.title}
+        </h2>
+        <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-200 leading-relaxed mb-6">
+          {t.pitch.conception.body}
+        </p>
+        <div className="grid gap-3 md:grid-cols-2 mb-6">
+          {t.pitch.conception.principles.map((p, i) => (
+            <div
+              key={i}
+              className="p-5 rounded-2xl bg-gradient-to-br from-white to-pink-50 dark:from-zinc-900 dark:to-pink-950/30 border border-pink-100 dark:border-pink-950"
+            >
+              <div className="text-xs font-mono font-bold text-pink-500 mb-1">{p.num}</div>
+              <h3 className="font-bold mb-1">{p.title}</h3>
+              <p className="text-sm text-zinc-600 dark:text-zinc-400 leading-relaxed">{p.desc}</p>
+            </div>
+          ))}
+        </div>
+        <div className="bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30 rounded-2xl p-5 border border-pink-100 dark:border-pink-950">
+          <p className="text-xs font-bold text-pink-600 dark:text-pink-300 uppercase tracking-wider mb-3">
+            {lang === "ar" ? "رحلة المستخدمة" : "Parcours utilisatrice"}
+          </p>
+          <div className="flex flex-wrap items-center gap-2">
+            {t.pitch.conception.journey.map((j, i) => (
+              <div key={i} className="flex items-center gap-2">
+                <div className="flex items-center gap-2 bg-white dark:bg-zinc-900 rounded-xl px-3 py-2 border border-pink-200 dark:border-pink-900">
+                  <span className="text-xs font-mono font-bold text-pink-500">{j.step}</span>
+                  <span className="text-sm font-medium">{j.label}</span>
+                </div>
+                {i < t.pitch.conception.journey.length - 1 && (
+                  <ChevronRight className="h-4 w-4 text-pink-400 rtl:rotate-180 flex-shrink-0" />
+                )}
+              </div>
+            ))}
+          </div>
         </div>
       </Section>
 

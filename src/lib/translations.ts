@@ -87,6 +87,13 @@ type Translation = {
       body: string;
       pillars: { icon: string; title: string; desc: string }[];
     };
+    conception: {
+      kicker: string;
+      title: string;
+      body: string;
+      principles: { num: string; title: string; desc: string }[];
+      journey: { step: string; label: string }[];
+    };
     features: {
       kicker: string;
       title: string;
@@ -357,6 +364,23 @@ export const translations: Record<Lang, Translation> = {
           { icon: "🌸", title: "بحس ثقافي", desc: "احترام للحياء والخصوصية" },
           { icon: "🤖", title: "ذكاء اصطناعي", desc: "Gemini AI كيجاوبك بسرعة" },
           { icon: "🔒", title: "خصوصية كاملة", desc: "معلوماتك ما كاتنخزنش" },
+        ],
+      },
+      conception: {
+        kicker: "النهج ديالنا",
+        title: "قبل ما نكدّو، فكرنا",
+        body: "ماكدّيناش بحال غيرنا. قبل ما نبداو، حددنا 4 مبادئ ديال التصميم. كل شي ف لالة جا منهم.",
+        principles: [
+          { num: "01", title: "المستخدمة قبل التكنولوجيا", desc: "بنينا للنساء المغربيات الحقيقيات، ماشي مستخدمين افتراضيين." },
+          { num: "02", title: "الدارجة من الأول", desc: "ماترجمناش من الفرنسية. كتبنا بالدارجة من البداية." },
+          { num: "03", title: "الخصوصية أولاً", desc: "حذفنا قواعد البيانات. الأجوبة ما كاتنحفظش. صفر بيانات شخصية." },
+          { num: "04", title: "نعاون ماشي نشخص", desc: "AI ممنوع عليه يشخص. كل جواب كيحيل على الطبيبة." },
+        ],
+        journey: [
+          { step: "01", label: "كتكتشف لالة" },
+          { step: "02", label: "كتعلم وكتفهم" },
+          { step: "03", label: "كتدير الفحص" },
+          { step: "04", label: "كتولي عادة شهرية" },
         ],
       },
       features: {
@@ -658,6 +682,23 @@ export const translations: Record<Lang, Translation> = {
           { icon: "🌸", title: "Sensibilité culturelle", desc: "Respect de la pudeur" },
           { icon: "🤖", title: "Intelligence artificielle", desc: "Gemini AI répond instantanément" },
           { icon: "🔒", title: "Confidentialité totale", desc: "Vos données ne sont pas stockées" },
+        ],
+      },
+      conception: {
+        kicker: "Notre Approche",
+        title: "Avant de coder, on a réfléchi",
+        body: "Ce n'est pas un projet improvisé. Avant la première ligne de code, on a défini 4 principes de conception. Tout dans Lalla en découle.",
+        principles: [
+          { num: "01", title: "L'utilisatrice avant la technologie", desc: "Conçu pour des vraies femmes marocaines, pas des utilisateurs imaginaires." },
+          { num: "02", title: "Le darija dès le départ", desc: "Pas une traduction du français. Écrit en darija depuis la première ligne." },
+          { num: "03", title: "Confidentialité par conception", desc: "Pas de base de données. Aucune réponse stockée. Zéro donnée personnelle." },
+          { num: "04", title: "Éduquer, pas diagnostiquer", desc: "L'IA est explicitement interdite de diagnostiquer. Toujours orienter vers un médecin." },
+        ],
+        journey: [
+          { step: "01", label: "Elle découvre Lalla" },
+          { step: "02", label: "Elle apprend et comprend" },
+          { step: "03", label: "Elle fait l'auto-examen" },
+          { step: "04", label: "Ça devient une habitude mensuelle" },
         ],
       },
       features: {
