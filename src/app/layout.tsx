@@ -52,7 +52,7 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-gradient-to-br from-rose-50 via-white to-pink-50 dark:from-zinc-950 dark:via-black dark:to-zinc-900">
+      <body className="min-h-full flex flex-col font-sans bg-gradient-to-b from-rose-50/40 via-white to-white dark:from-zinc-950 dark:via-zinc-950 dark:to-black text-zinc-800 dark:text-zinc-100">
         <LanguageProvider>
           <Header />
           <main className="flex-1">{children}</main>

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell, ScanLine, Camera } from "lucide-react";
+import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell, ScanLine, Camera, ShieldCheck } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShareCard } from "@/components/ShareCard";
@@ -73,7 +73,7 @@ export default function Home() {
           <Sparkles className="h-4 w-4" />
           {t.tagline}
         </div>
-        <h1 className="text-4xl md:text-6xl font-bold tracking-tight bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-4xl md:text-6xl font-bold tracking-tight text-zinc-900 dark:text-white leading-tight">
           {t.hero.title}
         </h1>
         <p className="text-lg md:text-xl text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
@@ -93,15 +93,13 @@ export default function Home() {
           </Link>
         </div>
 
-        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-4">
-          <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-400">
-            {lang === "fr" ? "Aligné sur les références" : "Aligned with"}
+        <div className="flex justify-center pt-4">
+          <span className="inline-flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 bg-white dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-full px-4 py-1.5 shadow-sm">
+            <ShieldCheck className="h-4 w-4 text-emerald-500 flex-shrink-0" />
+            {lang === "fr"
+              ? "Contenu éducatif aligné sur l'ACS, l'OMS, BI-RADS et le NCI"
+              : "Educational content aligned with ACS, WHO, BI-RADS & NCI"}
           </span>
-          {["ACS", "WHO", "BI-RADS", "NCI"].map((s) => (
-            <span key={s} className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/70 px-2.5 py-1 rounded-md">
-              {s}
-            </span>
-          ))}
         </div>
       </section>
 
