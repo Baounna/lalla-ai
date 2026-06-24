@@ -18,15 +18,15 @@ export default function VisualPage() {
       <section className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 bg-rose-100 dark:bg-rose-950 text-rose-700 dark:text-rose-200 px-4 py-1.5 rounded-full text-sm font-medium">
           <Camera className="h-4 w-4" />
-          {fr ? "Inspection visuelle · guidée par caméra" : "Visual inspection · camera-guided"}
+          {fr ? "Inspection visuelle · IA sur appareil" : "Visual inspection · on-device AI"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
-          {fr ? "Auto-examen visuel" : "Visual self-check"}
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
+          {fr ? "Auto-examen visuel guidé par IA" : "AI-guided visual self-check"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
           {fr
-            ? "Utilisez votre caméra comme un miroir guidé pour repérer les changements visibles. Tout reste sur votre appareil."
-            : "Use your camera as a guided mirror to spot visible changes. Everything stays on your device."}
+            ? "Une IA de détection de posture suit votre corps en temps réel, met en évidence la zone à examiner et vérifie votre position — entièrement sur votre appareil."
+            : "On-device pose-detection AI tracks your body in real time, highlights the area to examine, and checks your position — all on your device."}
         </p>
       </section>
 
