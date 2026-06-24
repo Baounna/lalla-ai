@@ -5,7 +5,7 @@ import { useLang } from "@/lib/language";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Calendar, Sparkles, Eye, Hand, ShowerHead, Bed, Box } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Calendar, Sparkles, Eye, Hand, ShowerHead, Bed, Box, Info } from "lucide-react";
 import Link from "next/link";
 import dynamic from "next/dynamic";
 
@@ -52,6 +52,22 @@ export default function CheckPage() {
                   : "Every month, one week after your period starts. If you don't have periods, pick the same day each month."}
               </p>
             </div>
+          </div>
+          <div className="flex items-start gap-3 pt-3 border-t border-rose-100 dark:border-rose-900">
+            <Info className="h-5 w-5 text-rose-500 mt-0.5 flex-shrink-0" />
+            <p className="text-sm text-zinc-600 dark:text-zinc-300">
+              {lang === "fr" ? (
+                <>
+                  L&apos;auto-examen ne suffit pas à lui seul : associez-le à une{" "}
+                  <Link href="/screening" className="text-rose-600 dark:text-rose-300 underline">mammographie</Link> et à un examen clinique réguliers.
+                </>
+              ) : (
+                <>
+                  Self-exam alone isn&apos;t enough — combine it with regular{" "}
+                  <Link href="/screening" className="text-rose-600 dark:text-rose-300 underline">mammograms</Link> and clinical exams.
+                </>
+              )}
+            </p>
           </div>
         </Card>
 
