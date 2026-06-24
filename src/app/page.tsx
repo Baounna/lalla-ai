@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell, ScanLine } from "lucide-react";
+import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell, ScanLine, Camera } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShareCard } from "@/components/ShareCard";
@@ -14,6 +14,18 @@ export default function Home() {
   const features = [
     { href: "/chat", icon: MessageCircle, color: "from-rose-500 to-pink-500", data: t.features.chat },
     { href: "/check", icon: ListChecks, color: "from-pink-500 to-fuchsia-500", data: t.features.check },
+    {
+      href: "/visual",
+      icon: Camera,
+      color: "from-rose-400 to-pink-500",
+      data: {
+        title: lang === "fr" ? "Examen visuel (caméra)" : "Visual check (camera)",
+        desc:
+          lang === "fr"
+            ? "Votre caméra comme miroir guidé pour repérer les changements — 100 % sur votre appareil"
+            : "Your camera as a guided mirror to spot visible changes — 100% on your device",
+      },
+    },
     {
       href: "/screening",
       icon: ScanLine,
@@ -96,7 +108,7 @@ export default function Home() {
       <section className="bg-gradient-to-br from-rose-500 to-pink-600 text-white rounded-3xl p-8 md:p-12 shadow-2xl">
         <div className="grid gap-6 md:grid-cols-3 text-center">
           <div>
-            <div className="text-4xl md:text-5xl font-bold mb-2">36%</div>
+            <div className="text-4xl md:text-5xl font-bold mb-2">1 in 8</div>
             <p className="text-rose-100">{t.stats.cancers}</p>
           </div>
           <div>
@@ -104,7 +116,7 @@ export default function Home() {
             <p className="text-rose-100">{t.stats.survival}</p>
           </div>
           <div>
-            <div className="text-4xl md:text-5xl font-bold mb-2">11K</div>
+            <div className="text-4xl md:text-5xl font-bold mb-2">2.3M</div>
             <p className="text-rose-100">{t.stats.cases}</p>
           </div>
         </div>

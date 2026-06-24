@@ -15,7 +15,7 @@ function nextReminderDate(dayOfMonth: number): Date {
 }
 
 function formatDate(d: Date, lang: Lang) {
-  return d.toLocaleDateString(lang === "fr" ? "fr-MA" : "en-US", {
+  return d.toLocaleDateString(lang === "fr" ? "fr-FR" : "en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",

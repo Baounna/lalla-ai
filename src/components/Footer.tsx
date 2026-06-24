@@ -28,7 +28,7 @@ export function Footer() {
           className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-300 hover:underline"
         >
           <Presentation className="h-3.5 w-3.5" />
-          {lang === "fr" ? "Architecture" : "Architecture"}
+          Architecture
         </Link>
       </div>
     </footer>

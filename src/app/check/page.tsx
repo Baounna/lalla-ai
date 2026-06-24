@@ -19,7 +19,7 @@ const SelfCheck3D = dynamic(() => import("@/components/SelfCheck3D"), {
 const stepIcons = [Eye, Eye, Eye, Bed, Hand, Hand, ShowerHead];
 
 export default function CheckPage() {
-  const { lang, t, dir } = useLang();
+  const { lang, t } = useLang();
   const [step, setStep] = useState(-1);
   const [completed, setCompleted] = useState<number[]>([]);
 
@@ -76,7 +76,7 @@ export default function CheckPage() {
             className="bg-rose-500 hover:bg-rose-600 text-white rounded-full px-10 h-12 text-base"
           >
             {t.check.start}
-            {dir === "rtl" ? <ChevronLeft className="ms-2 h-5 w-5" /> : <ChevronRight className="ms-2 h-5 w-5" />}
+            <ChevronRight className="ms-2 h-5 w-5" />
           </Button>
         </div>
 
@@ -199,7 +199,7 @@ export default function CheckPage() {
           disabled={step === 0}
           className="rounded-full"
         >
-          {dir === "rtl" ? <ChevronRight className="me-1 h-4 w-4" /> : <ChevronLeft className="me-1 h-4 w-4" />}
+          <ChevronLeft className="me-1 h-4 w-4" />
           {t.check.prev}
         </Button>
         <Button
@@ -210,7 +210,7 @@ export default function CheckPage() {
           className="bg-rose-500 hover:bg-rose-600 rounded-full px-6"
         >
           {step === steps.length - 1 ? t.check.done : t.check.next}
-          {dir === "rtl" ? <ChevronLeft className="ms-1 h-4 w-4" /> : <ChevronRight className="ms-1 h-4 w-4" />}
+          <ChevronRight className="ms-1 h-4 w-4" />
         </Button>
       </div>
     </div>

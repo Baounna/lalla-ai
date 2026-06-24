@@ -14,12 +14,18 @@ export function Header() {
     { href: "/", label: t.nav.home },
     { href: "/chat", label: t.nav.chat },
     { href: "/check", label: t.nav.check },
+    { href: "/visual", label: t.nav.visual },
     { href: "/screening", label: t.nav.screening },
     { href: "/quiz", label: t.nav.quiz },
     { href: "/learn", label: t.nav.learn },
     { href: "/doctors", label: t.nav.doctors },
     { href: "/reminder", label: t.nav.reminder },
   ];
+
+  // Desktop bar shows the core journey; the rest live in the mobile menu to avoid crowding.
+  const primary = links.filter((l) =>
+    ["/", "/chat", "/check", "/visual", "/screening", "/learn"].includes(l.href),
+  );
 
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/80 dark:bg-zinc-950/80 border-b border-rose-100 dark:border-rose-950">
@@ -30,7 +36,7 @@ export function Header() {
         </Link>
 
         <nav className="hidden md:flex items-center gap-1">
-          {links.map((l) => (
+          {primary.map((l) => (
             <Link
               key={l.href}
               href={l.href}
@@ -39,6 +45,12 @@ export function Header() {
               {l.label}
             </Link>
           ))}
+          <button
+            onClick={() => setOpen(!open)}
+            className="px-3 py-1.5 rounded-full text-sm hover:bg-rose-50 dark:hover:bg-rose-950 transition-colors text-zinc-500"
+          >
+            {lang === "fr" ? "Plus" : "More"}
+          </button>
         </nav>
 
         <div className="flex items-center gap-2">
@@ -68,7 +80,7 @@ export function Header() {
       </div>
 
       {open && (
-        <nav className="md:hidden border-t border-rose-100 dark:border-rose-950 px-4 py-2 flex flex-col gap-1 bg-white dark:bg-zinc-950">
+        <nav className="border-t border-rose-100 dark:border-rose-950 px-4 py-2 grid grid-cols-2 md:grid-cols-3 gap-1 bg-white dark:bg-zinc-950">
           {links.map((l) => (
             <Link
               key={l.href}

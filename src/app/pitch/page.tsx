@@ -137,7 +137,7 @@ export default function PitchPage() {
                   <span className="text-sm font-medium">{j.label}</span>
                 </div>
                 {i < t.pitch.conception.journey.length - 1 && (
-                  <ChevronRight className="h-4 w-4 text-pink-400 rtl:rotate-180 flex-shrink-0" />
+                  <ChevronRight className="h-4 w-4 text-pink-400 flex-shrink-0" />
                 )}
               </div>
             ))}
@@ -231,7 +231,7 @@ export default function PitchPage() {
             className="bg-white text-rose-600 hover:bg-rose-50 rounded-full px-8 h-12 text-base shadow-xl"
           >
             {t.pitch.closing.cta}
-            <ArrowRight className="ms-2 h-5 w-5 rtl:rotate-180" />
+            <ArrowRight className="ms-2 h-5 w-5" />
           </Button>
         </Link>
         <div className="mt-10 pt-6 border-t border-white/20 text-sm text-rose-50">

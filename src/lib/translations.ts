@@ -4,7 +4,7 @@ type Translation = {
   appName: string;
   tagline: string;
   hero: { title: string; subtitle: string; cta: string; learn: string };
-  nav: { home: string; chat: string; check: string; screening: string; quiz: string; learn: string; doctors: string; reminder: string };
+  nav: { home: string; chat: string; check: string; visual: string; screening: string; quiz: string; learn: string; doctors: string; reminder: string };
   features: {
     chat: { title: string; desc: string };
     check: { title: string; desc: string };
@@ -185,6 +185,7 @@ export const translations: Record<Lang, Translation> = {
       home: "Home",
       chat: "Talk to Lalla",
       check: "Self-exam",
+      visual: "Visual check",
       screening: "Screening",
       quiz: "Risk check",
       learn: "Learn",
@@ -348,9 +349,9 @@ export const translations: Record<Lang, Translation> = {
     },
     footer: "Made with love by The Da Vinci Code · Vibe Coding Hackathon 2026",
     stats: {
-      cancers: "of all cancers in women are breast cancer",
+      cancers: "women develop breast cancer in their lifetime",
       survival: "survival rate with early detection",
-      cases: "new cases every year (Morocco)",
+      cases: "new cases worldwide every year",
     },
     trust: {
       privacy: { title: "Privacy first", desc: "Your data stays with you" },
@@ -551,6 +552,7 @@ export const translations: Record<Lang, Translation> = {
       home: "Accueil",
       chat: "Parler à Lalla",
       check: "Auto-examen",
+      visual: "Examen visuel",
       screening: "Dépistage",
       quiz: "Évaluation",
       learn: "Apprendre",
@@ -681,11 +683,11 @@ export const translations: Record<Lang, Translation> = {
     },
     learn: {
       title: "Apprendre et sensibiliser",
-      subtitle: "Informations fiables sur le cancer du sein au Maroc",
+      subtitle: "Informations simples et fiables sur le cancer du sein",
       sections: [
         {
           title: "Qu'est-ce que le cancer du sein ?",
-          body: "Le cancer du sein est une croissance anormale de cellules dans le tissu mammaire. C'est le cancer le plus fréquent chez les femmes au Maroc, mais s'il est détecté tôt, le taux de guérison dépasse 90%.",
+          body: "Le cancer du sein est une croissance anormale de cellules dans le tissu mammaire. C'est le cancer le plus fréquent chez les femmes dans le monde. La bonne nouvelle : détecté tôt, plus de 90% des femmes en guérissent.",
         },
         {
           title: "Pourquoi le dépistage précoce ?",
@@ -696,15 +698,15 @@ export const translations: Record<Lang, Translation> = {
           body: "Mythe : l'examen est douloureux → Réalité : l'auto-examen ne fait pas mal. Mythe : seules les femmes âgées sont touchées → Réalité : les jeunes femmes aussi peuvent l'avoir.",
         },
         {
-          title: "Statistiques au Maroc",
-          body: "Au Maroc, le cancer du sein représente 36% des cancers chez les femmes. Plus de 11 000 nouveaux cas par an. Détection précoce = vie plus longue.",
+          title: "Les chiffres",
+          body: "Le cancer du sein touche plus de 2,3 millions de femmes dans le monde chaque année. Au Maroc — où Lalla est née — il représente 36% des cancers féminins, avec plus de 11 000 nouveaux cas par an. Avec un dépistage précoce, la survie dépasse 90%.",
         },
       ],
       resources: "Ressources utiles",
       resourcesList: [
-        "Fondation Lalla Salma - 0801 003 003",
-        "Centre Régional d'Oncologie",
-        "Consultez votre médecin pour tout changement",
+        "OMS — informations et recommandations sur le cancer du sein",
+        "Votre société nationale du cancer ou programme de dépistage",
+        "Consultez votre médecin pour tout changement constaté",
       ],
     },
     common: {
@@ -714,9 +716,9 @@ export const translations: Record<Lang, Translation> = {
     },
     footer: "Fait avec amour par l'équipe The Da Vinci Code · Vibe Coding Hackathon 2026",
     stats: {
-      cancers: "des cancers chez les femmes marocaines",
+      cancers: "femmes développeront un cancer du sein au cours de leur vie",
       survival: "taux de guérison avec détection précoce",
-      cases: "nouveaux cas par an au Maroc",
+      cases: "nouveaux cas dans le monde chaque année",
     },
     trust: {
       privacy: { title: "Confidentialité", desc: "Vos données restent chez vous" },
@@ -742,7 +744,7 @@ export const translations: Record<Lang, Translation> = {
         desc: "L'architecture sépare la présentation, le serveur et l'IA. Chaque couche a une responsabilité claire.",
         layers: [
           { name: "Utilisatrice", tech: "Navigateur (mobile ou laptop)", role: "Voit l'interface multilingue" },
-          { name: "Frontend", tech: "Next.js 16 + React + Tailwind", role: "Pages interactives, RTL, bilingue" },
+          { name: "Frontend", tech: "Next.js 16 + React + Tailwind", role: "Pages interactives, guide 3D, bilingue" },
           { name: "Backend", tech: "API Routes (/api/chat, /api/quiz)", role: "Ajoute le system prompt et appelle Gemini" },
           { name: "Intelligence Artificielle", tech: "Google Gemini 2.5 Flash", role: "Génère les réponses" },
         ],
@@ -750,8 +752,8 @@ export const translations: Record<Lang, Translation> = {
       usecase: {
         kicker: "02 · Cas d'utilisation",
         title: "Ce que peut faire l'utilisatrice",
-        desc: "Nous avons identifié 7 cas d'utilisation principaux pour les femmes marocaines.",
-        actor: "Femme marocaine",
+        desc: "Nous avons identifié 7 cas d'utilisation principaux pour les femmes partout.",
+        actor: "Femme",
         cases: [
           "Parler à Lalla (IA)",
           "Faire l'auto-examen",
@@ -788,13 +790,13 @@ export const translations: Record<Lang, Translation> = {
       },
       problem: {
         kicker: "Le Problème",
-        title: "Au Maroc, des femmes meurent parce que l'information ne les atteint pas",
+        title: "Des femmes meurent car l'information vitale ne les atteint pas à temps",
         stats: [
-          { value: "11K+", label: "nouveaux cas par an" },
-          { value: "36%", label: "des cancers chez les femmes" },
+          { value: "2.3M", label: "nouveaux cas dans le monde / an" },
+          { value: "36%", label: "des cancers féminins (Maroc)" },
           { value: "70%", label: "diagnostiqués trop tard" },
         ],
-        body: "Le cancer du sein est très répandu au Maroc. Mais le problème n'est pas le traitement — c'est que l'information n'atteint pas les femmes dans leur langue. La plupart des applications sont en français ou anglais, avec un langage médical complexe. Résultat : 7 femmes sur 10 sont diagnostiquées trop tard, quand le traitement devient difficile.",
+        body: "Le cancer du sein est le cancer le plus fréquent chez les femmes dans le monde. Le vrai problème n'est souvent pas le traitement — c'est que des conseils clairs et fiables n'atteignent pas les femmes sous une forme accessible. La plupart des outils sont cliniques et intimidants. Résultat : trop de femmes sont diagnostiquées tard, quand le traitement est le plus difficile. Lalla est née au Maroc — et la même idée sert les femmes partout.",
       },
       solution: {
         kicker: "Notre Solution",
@@ -840,9 +842,9 @@ export const translations: Record<Lang, Translation> = {
         kicker: "Notre Innovation",
         title: "Ce qui nous distingue",
         points: [
+          { icon: "🧊", title: "Guide 3D de référence", desc: "Une visualisation 3D interactive de l'auto-examen, synchronisée aux étapes — pas des images statiques" },
           { icon: "🎤", title: "Saisie vocale", desc: "Posez vos questions à la voix, sans les mains — un meilleur accès pour toutes" },
           { icon: "💬", title: "Partage WhatsApp", desc: "Chaque utilisatrice peut envoyer Lalla à sa sœur, mère, amie en un clic" },
-          { icon: "📅", title: "Intégration calendrier", desc: "Rappel permanent, pas une notification éphémère" },
           { icon: "🌐", title: "Sans inscription", desc: "Aucun téléphone requis — confidentialité totale" },
         ],
       },
@@ -866,7 +868,7 @@ export const translations: Record<Lang, Translation> = {
           "Web Speech API (entrée vocale)",
           "Calendar ICS (intégration calendrier)",
           "Vercel (déploiement gratuit avec HTTPS)",
-          "Open source, code disponible publiquement",
+          "Three.js + React Three Fiber (guide 3D interactif)",
         ],
       },
       closing: {

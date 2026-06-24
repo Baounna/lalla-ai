@@ -28,6 +28,11 @@ export default function DoctorsPage() {
         <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600 bg-clip-text text-transparent leading-tight">
           {t.doctors.subtitle}
         </h1>
+        <p className="inline-flex items-center gap-2 text-xs text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/60 px-3 py-1.5 rounded-full">
+          🇲🇦 {lang === "fr"
+            ? "Annuaire d'exemple — Maroc. Des annuaires locaux arrivent."
+            : "Example directory — Morocco. Localized directories coming."}
+        </p>
       </header>
 
       <a

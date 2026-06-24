@@ -5,7 +5,7 @@ import { useLang } from "@/lib/language";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ClipboardCheck, ChevronLeft, ChevronRight, Loader2, CheckCircle2, AlertTriangle, AlertCircle, Heart } from "lucide-react";
+import { ClipboardCheck, ChevronLeft, Loader2, CheckCircle2, AlertTriangle, AlertCircle, Heart } from "lucide-react";
 import Link from "next/link";
 
 type Result = {
@@ -18,7 +18,7 @@ type Result = {
 };
 
 export default function QuizPage() {
-  const { lang, t, dir } = useLang();
+  const { lang, t } = useLang();
   const [started, setStarted] = useState(false);
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState<(string | null)[]>(Array(t.quiz.questions.length).fill(null));
@@ -233,7 +233,7 @@ export default function QuizPage() {
           disabled={index === 0}
           className="rounded-full"
         >
-          {dir === "rtl" ? <ChevronRight className="me-1 h-4 w-4" /> : <ChevronLeft className="me-1 h-4 w-4" />}
+          <ChevronLeft className="me-1 h-4 w-4" />
           {lang === "fr" ? "Précédent" : "Previous"}
         </Button>
         <span className="text-sm text-muted-foreground self-center">

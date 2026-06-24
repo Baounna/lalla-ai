@@ -75,7 +75,7 @@ export default function LearnPage() {
           <Link href="/chat">
             <Button className="bg-rose-500 hover:bg-rose-600 rounded-full px-6">
               {lang === "fr" ? "Parler à Lalla" : "Talk to Lalla"}
-              <ArrowRight className="ms-2 h-4 w-4 rtl:rotate-180" />
+              <ArrowRight className="ms-2 h-4 w-4" />
             </Button>
           </Link>
           <Link href="/check">
