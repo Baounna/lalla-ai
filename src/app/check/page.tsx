@@ -5,8 +5,16 @@ import { useLang } from "@/lib/language";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Calendar, Sparkles, Eye, Hand, ShowerHead, Bed } from "lucide-react";
+import { ChevronLeft, ChevronRight, CheckCircle2, AlertCircle, Calendar, Sparkles, Eye, Hand, ShowerHead, Bed, Box } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
+
+const SelfCheck3D = dynamic(() => import("@/components/SelfCheck3D"), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-full min-h-[340px] rounded-2xl bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-zinc-900 animate-pulse" />
+  ),
+});
 
 const stepIcons = [Eye, Eye, Eye, Bed, Hand, Hand, ShowerHead];
 
@@ -36,12 +44,12 @@ export default function CheckPage() {
             <Calendar className="h-6 w-6 text-rose-500 mt-1 flex-shrink-0" />
             <div>
               <h3 className="font-bold mb-1">
-                {lang === "ar" ? "متى تديري الفحص؟" : "Quand faire l'examen ?"}
+                {lang === "fr" ? "Quand faire l'examen ?" : "When to do the exam?"}
               </h3>
               <p className="text-sm text-zinc-600 dark:text-zinc-300">
-                {lang === "ar"
-                  ? "كل شهر، أسبوع واحد بعد بداية الدورة. إيلا ماعنديش الدورة، اختاري نفس النهار من كل شهر."
-                  : "Chaque mois, une semaine après le début des règles. Sans règles, choisissez le même jour chaque mois."}
+                {lang === "fr"
+                  ? "Chaque mois, une semaine après le début des règles. Sans règles, choisissez le même jour chaque mois."
+                  : "Every month, one week after your period starts. If you don't have periods, pick the same day each month."}
               </p>
             </div>
           </div>
@@ -99,22 +107,22 @@ export default function CheckPage() {
           <CheckCircle2 className="h-12 w-12" />
         </div>
         <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent">
-          {lang === "ar" ? "أحسنتي! 🌸" : "Bravo ! 🌸"}
+          {lang === "fr" ? "Bravo ! 🌸" : "Well done! 🌸"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300">
-          {lang === "ar"
-            ? "كملتي الفحص الذاتي بنجاح. تذكري: عاوديه كل شهر."
-            : "Vous avez terminé l'auto-examen. Rappelez-vous : refaites-le chaque mois."}
+          {lang === "fr"
+            ? "Vous avez terminé l'auto-examen. Rappelez-vous : refaites-le chaque mois."
+            : "You completed the self-exam. Remember: do it again every month."}
         </p>
         <div className="flex flex-wrap justify-center gap-3 pt-4">
           <Link href="/reminder">
             <Button className="bg-rose-500 hover:bg-rose-600 rounded-full px-6 shadow-lg">
-              {lang === "ar" ? "🔔 فعّلي التذكير الشهري" : "🔔 Activer le rappel mensuel"}
+              {lang === "fr" ? "🔔 Activer le rappel mensuel" : "🔔 Enable monthly reminder"}
             </Button>
           </Link>
           <Link href="/chat">
             <Button variant="outline" className="rounded-full px-6">
-              {lang === "ar" ? "سولي لالة" : "Demander à Lalla"}
+              {lang === "fr" ? "Demander à Lalla" : "Ask Lalla"}
             </Button>
           </Link>
           <Button
@@ -125,7 +133,7 @@ export default function CheckPage() {
             }}
             className="rounded-full px-6"
           >
-            {lang === "ar" ? "عاودي" : "Refaire"}
+            {lang === "fr" ? "Refaire" : "Restart"}
           </Button>
         </div>
       </div>
@@ -137,7 +145,7 @@ export default function CheckPage() {
   const progress = ((step + 1) / steps.length) * 100;
 
   return (
-    <div className="max-w-2xl mx-auto px-4 py-6 md:py-10">
+    <div className="max-w-5xl mx-auto px-4 py-6 md:py-10">
       <div className="mb-6">
         <div className="flex items-center justify-between mb-2">
           <Badge variant="secondary" className="bg-rose-100 text-rose-700 dark:bg-rose-950 dark:text-rose-200">
@@ -153,29 +161,36 @@ export default function CheckPage() {
         </div>
       </div>
 
-      <Card className="p-6 md:p-10 mb-6 border-rose-100 dark:border-rose-950 shadow-xl bg-white/95 dark:bg-zinc-900/95">
-        <div className="text-center mb-6">
-          <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white shadow-lg mb-4">
-            <Icon className="h-10 w-10" />
-          </div>
-          <h2 className="text-2xl md:text-3xl font-bold mb-3">{current.title}</h2>
-          <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-200 leading-relaxed">
-            {current.desc}
-          </p>
+      <div className="grid gap-6 md:grid-cols-2 mb-6 items-stretch">
+        <div className="min-h-[340px] md:min-h-[440px]">
+          <SelfCheck3D step={step} caption={current.title} />
         </div>
 
-        <div className="bg-rose-50 dark:bg-rose-950/40 rounded-xl p-4 border border-rose-100 dark:border-rose-900">
-          <div className="flex gap-2 items-start">
-            <Sparkles className="h-5 w-5 text-rose-500 flex-shrink-0 mt-0.5" />
-            <p className="text-sm text-rose-900 dark:text-rose-100">
-              <span className="font-semibold">
-                {lang === "ar" ? "نصيحة: " : "Astuce : "}
-              </span>
-              {current.tip}
+        <Card className="p-6 md:p-8 border-rose-100 dark:border-rose-950 shadow-xl bg-white/95 dark:bg-zinc-900/95 flex flex-col">
+          <div className="mb-5">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white shadow-lg mb-4">
+              <Icon className="h-8 w-8" />
+            </div>
+            <div className="inline-flex items-center gap-1.5 text-[11px] font-mono uppercase tracking-wider text-rose-400 mb-2 ms-1">
+              <Box className="h-3 w-3" /> {t.check.guide3d}
+            </div>
+            <h2 className="text-2xl md:text-3xl font-bold mb-3">{current.title}</h2>
+            <p className="text-base md:text-lg text-zinc-700 dark:text-zinc-200 leading-relaxed">
+              {current.desc}
             </p>
           </div>
-        </div>
-      </Card>
+
+          <div className="mt-auto bg-rose-50 dark:bg-rose-950/40 rounded-xl p-4 border border-rose-100 dark:border-rose-900">
+            <div className="flex gap-2 items-start">
+              <Sparkles className="h-5 w-5 text-rose-500 flex-shrink-0 mt-0.5" />
+              <p className="text-sm text-rose-900 dark:text-rose-100">
+                <span className="font-semibold">{t.check.tip}</span>
+                {current.tip}
+              </p>
+            </div>
+          </div>
+        </Card>
+      </div>
 
       <div className="flex justify-between gap-3">
         <Button

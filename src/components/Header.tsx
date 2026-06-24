@@ -43,10 +43,10 @@ export function Header() {
         <div className="flex items-center gap-2">
           <div className="flex rounded-full border border-rose-200 dark:border-rose-900 overflow-hidden text-xs font-medium">
             <button
-              onClick={() => setLang("ar")}
-              className={`px-3 py-1 ${lang === "ar" ? "bg-rose-500 text-white" : "text-zinc-600 dark:text-zinc-300"}`}
+              onClick={() => setLang("en")}
+              className={`px-3 py-1 ${lang === "en" ? "bg-rose-500 text-white" : "text-zinc-600 dark:text-zinc-300"}`}
             >
-              العربية
+              EN
             </button>
             <button
               onClick={() => setLang("fr")}

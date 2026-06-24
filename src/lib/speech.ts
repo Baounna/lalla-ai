@@ -1,3 +1,5 @@
+import type { Lang } from "./translations";
+
 type SpeechRecognitionResult = {
   transcript: string;
   isFinal: boolean;
@@ -39,6 +41,6 @@ export function isVoiceSupported() {
   return getSpeechRecognition() !== null;
 }
 
-export function langCode(lang: "ar" | "fr") {
-  return lang === "ar" ? "ar-MA" : "fr-MA";
+export function langCode(lang: Lang) {
+  return lang === "fr" ? "fr-FR" : "en-US";
 }

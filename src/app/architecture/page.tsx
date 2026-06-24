@@ -190,21 +190,21 @@ export default function ArchitecturePage() {
         </Card>
 
         <p className="text-sm text-zinc-500 italic">
-          💡 {lang === "ar"
-            ? "كل سهم كيمثل رسالة بين المكونات. الترتيب من الفوق للتحت."
-            : "Chaque flèche représente un message entre composants. Lecture de haut en bas."}
+          💡 {lang === "fr"
+            ? "Chaque flèche représente un message entre composants. Lecture de haut en bas."
+            : "Each arrow represents a message between components. Read from top to bottom."}
         </p>
       </section>
 
       <section className="bg-gradient-to-br from-indigo-500 via-purple-500 to-rose-500 text-white rounded-3xl p-8 md:p-12 shadow-2xl text-center print:bg-purple-600 print:shadow-none">
         <Workflow className="h-12 w-12 mx-auto mb-4 opacity-90" />
         <h2 className="text-2xl md:text-3xl font-bold mb-3">
-          {lang === "ar" ? "بنية بسيطة، قوية، آمنة" : "Architecture simple, robuste, sécurisée"}
+          {lang === "fr" ? "Architecture simple, robuste, sécurisée" : "Simple, robust, secure architecture"}
         </h2>
         <p className="text-base md:text-lg max-w-2xl mx-auto opacity-90">
-          {lang === "ar"
-            ? "بلا قاعدة بيانات، بلا تسجيل، بلا تخزين. كلشي كيدور ف الوقت الحقيقي - وهادشي مقصود ديال التصميم."
-            : "Pas de base de données, pas d'authentification, pas de stockage. Tout se passe en temps réel — par conception."}
+          {lang === "fr"
+            ? "Pas de base de données, pas d'authentification, pas de stockage. Tout se passe en temps réel — par conception."
+            : "No database, no authentication, no storage. Everything happens in real time — by design."}
         </p>
       </section>
     </div>

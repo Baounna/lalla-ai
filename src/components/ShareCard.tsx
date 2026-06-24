@@ -90,7 +90,7 @@ export function ShareCard() {
             ) : (
               <>
                 <Copy className="me-2 h-5 w-5" />
-                {lang === "ar" ? "نسخ ولا مشاركة" : "Copier ou partager"}
+                {lang === "fr" ? "Copier ou partager" : "Copy or share"}
               </>
             )}
           </Button>

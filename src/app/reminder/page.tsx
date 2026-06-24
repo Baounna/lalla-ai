@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useLang } from "@/lib/language";
+import type { Lang } from "@/lib/translations";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Bell, BellRing, Calendar, CheckCircle2, Heart } from "lucide-react";
@@ -13,8 +14,8 @@ function nextReminderDate(dayOfMonth: number): Date {
   return d;
 }
 
-function formatDate(d: Date, lang: "ar" | "fr") {
-  return d.toLocaleDateString(lang === "ar" ? "ar-MA" : "fr-MA", {
+function formatDate(d: Date, lang: Lang) {
+  return d.toLocaleDateString(lang === "fr" ? "fr-MA" : "en-US", {
     weekday: "long",
     year: "numeric",
     month: "long",
@@ -51,9 +52,9 @@ export default function ReminderPage() {
       localStorage.setItem("reminderDay", String(day));
       new Notification(t.appName, {
         body:
-          lang === "ar"
-            ? `راه فعلنا التذكير ديالك ختي 💖 غادي نذكرك يوم ${day} من كل شهر`
-            : `Rappel activé 💖 Nous vous rappellerons le ${day} de chaque mois`,
+          lang === "fr"
+            ? `Rappel activé 💖 Nous vous rappellerons le ${day} de chaque mois`
+            : `Reminder activated 💖 We'll remind you on the ${day} of every month`,
         icon: "/favicon.ico",
       });
     }
@@ -62,11 +63,11 @@ export default function ReminderPage() {
   function downloadICS() {
     const next = nextReminderDate(day);
     const dateStr = next.toISOString().split("T")[0].replace(/-/g, "");
-    const title = lang === "ar" ? "الفحص الذاتي للثدي" : "Auto-examen mammaire";
+    const title = lang === "fr" ? "Auto-examen mammaire" : "Breast self-exam";
     const desc =
-      lang === "ar"
-        ? "تذكير من لالة AI - وقت الفحص الذاتي الشهري"
-        : "Rappel de Lalla AI - Auto-examen mensuel";
+      lang === "fr"
+        ? "Rappel de Lalla AI - Auto-examen mensuel"
+        : "Reminder from Lalla AI - Monthly self-exam time";
     const ics = `BEGIN:VCALENDAR
 VERSION:2.0
 PRODID:-//Lalla AI//EN

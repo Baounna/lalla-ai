@@ -14,35 +14,36 @@ const tajawal = Tajawal({
 export const metadata: Metadata = {
   metadataBase: new URL("https://lalla-ai.vercel.app"),
   title: {
-    default: "Lalla AI · صحة الثدي · The Da Vinci Code",
+    default: "Lalla AI · Interactive 3D Breast Self-Exam & Awareness",
     template: "%s · Lalla AI",
   },
   description:
-    "تطبيق ذكي للتوعية بسرطان الثدي والفحص الذاتي بالدارجة - Application IA pour la sensibilisation au cancer du sein chez les femmes marocaines",
+    "An AI companion that guides women through breast self-examination with a research-grade interactive 3D guide. Private, multilingual (English · French · Darija). Born in Morocco, designed for the world.",
   keywords: [
     "breast cancer",
+    "breast self-examination",
+    "3D self-exam guide",
+    "BSE",
+    "AI health",
+    "women health",
+    "early detection",
     "Morocco",
     "darija",
-    "self-examination",
-    "AI",
-    "health",
-    "سرطان الثدي",
-    "الفحص الذاتي",
-    "صحة المرأة",
+    "multilingual health app",
   ],
   authors: [{ name: "The Da Vinci Code" }],
   openGraph: {
-    title: "Lalla AI · لالة AI",
+    title: "Lalla AI · Interactive 3D Breast Self-Exam",
     description:
-      "تطبيق ذكي بالدارجة للتوعية بسرطان الثدي والفحص الذاتي للنساء المغربيات",
+      "A warm AI companion + a research-grade interactive 3D guide for breast self-examination. Multilingual, private, free. Born in Morocco, for every woman.",
     siteName: "Lalla AI",
-    locale: "ar_MA",
+    locale: "en_US",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Lalla AI · Code for Health",
-    description: "AI breast cancer awareness for Moroccan women, in Darija",
+    title: "Lalla AI · Interactive 3D Breast Self-Exam",
+    description: "AI breast-health companion with a research-grade interactive 3D self-exam guide. Multilingual & private.",
   },
 };
 
@@ -50,7 +51,7 @@ export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="ar" dir="rtl" suppressHydrationWarning className={`${tajawal.variable} h-full antialiased`}>
+    <html lang="en" dir="ltr" suppressHydrationWarning className={`${tajawal.variable} h-full antialiased`}>
       <body className="min-h-full flex flex-col font-sans bg-gradient-to-br from-rose-50 via-white to-pink-50 dark:from-zinc-950 dark:via-black dark:to-zinc-900">
         <LanguageProvider>
           <Header />

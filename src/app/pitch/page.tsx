@@ -127,7 +127,7 @@ export default function PitchPage() {
         </div>
         <div className="bg-gradient-to-r from-pink-50 to-rose-50 dark:from-pink-950/30 dark:to-rose-950/30 rounded-2xl p-5 border border-pink-100 dark:border-pink-950">
           <p className="text-xs font-bold text-pink-600 dark:text-pink-300 uppercase tracking-wider mb-3">
-            {lang === "ar" ? "رحلة المستخدمة" : "Parcours utilisatrice"}
+            {lang === "fr" ? "Parcours utilisatrice" : "User journey"}
           </p>
           <div className="flex flex-wrap items-center gap-2">
             {t.pitch.conception.journey.map((j, i) => (
@@ -242,7 +242,7 @@ export default function PitchPage() {
       </section>
 
       <p className="text-xs text-center text-muted-foreground print:block hidden">
-        {lang === "ar" ? "صفحة العرض - Lalla AI" : "Page de présentation - Lalla AI"}
+        {lang === "fr" ? "Page de présentation - Lalla AI" : "Pitch page - Lalla AI"}
       </p>
     </div>
   );

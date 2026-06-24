@@ -20,7 +20,7 @@ export function Footer() {
           className="inline-flex items-center gap-1.5 text-rose-600 dark:text-rose-300 hover:underline"
         >
           <Presentation className="h-3.5 w-3.5" />
-          {lang === "ar" ? "العرض التقديمي" : "Présentation"}
+          {lang === "fr" ? "Présentation" : "Pitch"}
         </Link>
         <span className="opacity-40">·</span>
         <Link
@@ -28,7 +28,7 @@ export function Footer() {
           className="inline-flex items-center gap-1.5 text-indigo-600 dark:text-indigo-300 hover:underline"
         >
           <Presentation className="h-3.5 w-3.5" />
-          {lang === "ar" ? "الهندسة" : "Architecture"}
+          {lang === "fr" ? "Architecture" : "Architecture"}
         </Link>
       </div>
     </footer>

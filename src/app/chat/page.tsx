@@ -24,15 +24,15 @@ export default function ChatPage() {
       const msg = err?.message || "";
       if (msg.includes("quota") || msg.includes("rate") || msg.includes("limit")) {
         setChatError(
-          lang === "ar"
-            ? "كاين زحمة دابا على لالة 🌸 صبري شي ثانية وعاودي. (الحد الشهري للاستعمال المجاني)"
-            : "Lalla est très demandée en ce moment 🌸 Attendez quelques secondes et réessayez. (Limite de l'usage gratuit)",
+          lang === "fr"
+            ? "Lalla est très demandée en ce moment 🌸 Attendez quelques secondes et réessayez. (Limite de l'usage gratuit)"
+            : "Lalla is very busy right now 🌸 Wait a few seconds and try again. (Free usage limit)",
         );
       } else {
         setChatError(
-          lang === "ar"
-            ? "وقع شي مشكل صغير. عاودي المحاولة."
-            : "Un petit souci. Réessayez.",
+          lang === "fr"
+            ? "Un petit souci. Réessayez."
+            : "A small problem. Please try again.",
         );
       }
     },
@@ -60,9 +60,9 @@ export default function ChatPage() {
     const SR = getSpeechRecognition();
     if (!SR) {
       setVoiceError(
-        lang === "ar"
-          ? "المتصفح ديالك ما كيدعمش الصوت. جربي Chrome ولا Safari."
-          : "Votre navigateur ne supporte pas la voix. Essayez Chrome ou Safari.",
+        lang === "fr"
+          ? "Votre navigateur ne supporte pas la voix. Essayez Chrome ou Safari."
+          : "Your browser does not support voice. Try Chrome or Safari.",
       );
       return;
     }
@@ -79,9 +79,9 @@ export default function ChatPage() {
       }
     } catch {
       setVoiceError(
-        lang === "ar"
-          ? "ما عطيتيش الإذن للمايكروفون. شوفي الإعدادات."
-          : "Permission micro refusée. Vérifiez les réglages.",
+        lang === "fr"
+          ? "Permission micro refusée. Vérifiez les réglages."
+          : "Microphone permission denied. Check your settings.",
       );
       return;
     }
@@ -91,9 +91,9 @@ export default function ChatPage() {
       rec = new SR();
     } catch {
       setVoiceError(
-        lang === "ar"
-          ? "ما قدرناش نفعّلو الصوت. جربي Chrome."
-          : "Impossible d'activer la voix. Essayez Chrome.",
+        lang === "fr"
+          ? "Impossible d'activer la voix. Essayez Chrome."
+          : "Could not enable voice. Try Chrome.",
       );
       return;
     }
@@ -119,31 +119,31 @@ export default function ChatPage() {
 
     rec.onerror = (e) => {
       setListening(false);
-      const errMap: Record<string, { ar: string; fr: string }> = {
+      const errMap: Record<string, { fr: string; en: string }> = {
         "not-allowed": {
-          ar: "ما عطيتيش الإذن للمايكروفون.",
           fr: "Permission micro refusée.",
+          en: "Microphone permission denied.",
         },
         "no-speech": {
-          ar: "ما سمعتش شي صوت. جربي تاني.",
           fr: "Aucun son détecté. Réessayez.",
+          en: "No sound detected. Try again.",
         },
         "network": {
-          ar: "خاص الإنترنت لخدمة الصوت. ولا المتصفح ديالك بلوكا الخدمة (Brave/Firefox).",
           fr: "Connexion requise. Ou votre navigateur bloque (Brave/Firefox).",
+          en: "Connection required. Or your browser is blocking it (Brave/Firefox).",
         },
         "service-not-allowed": {
-          ar: "المتصفح بلوكا خدمة الصوت. جربي Chrome ولا Safari.",
           fr: "Navigateur bloque le service vocal. Essayez Chrome ou Safari.",
+          en: "Browser is blocking the voice service. Try Chrome or Safari.",
         },
       };
       const msg = errMap[e.error];
       setVoiceError(
         msg
           ? msg[lang]
-          : lang === "ar"
-            ? `خطأ: ${e.error}. جربي Chrome.`
-            : `Erreur: ${e.error}. Essayez Chrome.`,
+          : lang === "fr"
+            ? `Erreur: ${e.error}. Essayez Chrome.`
+            : `Error: ${e.error}. Try Chrome.`,
       );
     };
 
@@ -160,26 +160,26 @@ export default function ChatPage() {
       rec.start();
     } catch {
       setVoiceError(
-        lang === "ar"
-          ? "ما قدرناش نبداو. جربي Chrome ولا Safari."
-          : "Impossible de démarrer. Essayez Chrome ou Safari.",
+        lang === "fr"
+          ? "Impossible de démarrer. Essayez Chrome ou Safari."
+          : "Could not start. Try Chrome or Safari.",
       );
     }
   }
 
   const suggestions =
-    lang === "ar"
+    lang === "fr"
       ? [
-          "كيفاش ندير الفحص الذاتي؟",
-          "أشنو هي علامات سرطان الثدي؟",
-          "متى خاصني نشوف الطبيبة؟",
-          "واش الألم ف الثدي عادي؟",
-        ]
-      : [
           "Comment faire l'auto-examen ?",
           "Quels sont les signes du cancer du sein ?",
           "Quand consulter un médecin ?",
           "Une douleur au sein est-elle normale ?",
+        ]
+      : [
+          "How do I do the self-exam?",
+          "What are the signs of breast cancer?",
+          "When should I see a doctor?",
+          "Is breast pain normal?",
         ];
 
   return (
@@ -208,7 +208,7 @@ export default function ChatPage() {
               </div>
               <div className="pt-2 space-y-2">
                 <p className="text-xs text-muted-foreground px-2">
-                  {lang === "ar" ? "جربي تسولي:" : "Essayez :"}
+                  {lang === "fr" ? "Essayez :" : "Try asking:"}
                 </p>
                 {suggestions.map((s) => (
                   <button
@@ -280,7 +280,7 @@ export default function ChatPage() {
                   }}
                   className="rounded-full text-xs h-7"
                 >
-                  {lang === "ar" ? "عاودي المحاولة" : "Réessayer"}
+                  {lang === "fr" ? "Réessayer" : "Retry"}
                 </Button>
               </div>
             </div>
@@ -300,7 +300,7 @@ export default function ChatPage() {
           <Input
             value={input}
             onChange={(e) => setInput(e.target.value)}
-            placeholder={listening ? (lang === "ar" ? "كنسمعك..." : "Je vous écoute...") : t.chat.placeholder}
+            placeholder={listening ? (lang === "fr" ? "Je vous écoute..." : "I'm listening...") : t.chat.placeholder}
             disabled={isLoading}
             className="rounded-full border-rose-200 focus-visible:ring-rose-400"
           />
@@ -310,7 +310,7 @@ export default function ChatPage() {
               onClick={toggleVoice}
               disabled={isLoading}
               className={`rounded-full px-4 ${listening ? "bg-rose-600 animate-pulse" : "bg-pink-500 hover:bg-pink-600"}`}
-              title={lang === "ar" ? "تكلمي" : "Parler"}
+              title={lang === "fr" ? "Parler" : "Speak"}
             >
               {listening ? <MicOff className="h-4 w-4" /> : <Mic className="h-4 w-4" />}
             </Button>

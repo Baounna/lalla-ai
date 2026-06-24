@@ -16,7 +16,7 @@ export default function LearnPage() {
       <header className="text-center space-y-4">
         <div className="inline-flex items-center gap-2 bg-purple-100 dark:bg-purple-950 text-purple-700 dark:text-purple-200 px-4 py-1.5 rounded-full text-sm font-medium">
           <BookOpen className="h-4 w-4" />
-          {lang === "ar" ? "معرفة" : "Connaissances"}
+          {lang === "fr" ? "Connaissances" : "Knowledge"}
         </div>
         <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-purple-600 via-fuchsia-600 to-rose-600 bg-clip-text text-transparent leading-tight">
           {t.learn.title}
@@ -64,23 +64,23 @@ export default function LearnPage() {
       <section className="text-center bg-gradient-to-br from-rose-50 to-pink-50 dark:from-rose-950/30 dark:to-pink-950/30 rounded-3xl p-8 md:p-10 border border-rose-100 dark:border-rose-950">
         <Heart className="h-12 w-12 text-rose-500 fill-rose-500 mx-auto mb-4" />
         <h3 className="text-2xl font-bold mb-3">
-          {lang === "ar" ? "خصك مساعدة؟" : "Besoin d'aide ?"}
+          {lang === "fr" ? "Besoin d'aide ?" : "Need help?"}
         </h3>
         <p className="text-zinc-600 dark:text-zinc-300 mb-6 max-w-md mx-auto">
-          {lang === "ar"
-            ? "لالة هنا تجاوبك على جميع أسئلتك بكل خصوصية وحب"
-            : "Lalla est là pour répondre à toutes vos questions, en toute confidentialité"}
+          {lang === "fr"
+            ? "Lalla est là pour répondre à toutes vos questions, en toute confidentialité"
+            : "Lalla is here to answer all your questions, in complete confidentiality"}
         </p>
         <div className="flex flex-wrap justify-center gap-3">
           <Link href="/chat">
             <Button className="bg-rose-500 hover:bg-rose-600 rounded-full px-6">
-              {lang === "ar" ? "هضري مع لالة" : "Parler à Lalla"}
+              {lang === "fr" ? "Parler à Lalla" : "Talk to Lalla"}
               <ArrowRight className="ms-2 h-4 w-4 rtl:rotate-180" />
             </Button>
           </Link>
           <Link href="/check">
             <Button variant="outline" className="rounded-full px-6">
-              {lang === "ar" ? "ابدئي الفحص" : "Commencer l'examen"}
+              {lang === "fr" ? "Commencer l'examen" : "Start the exam"}
             </Button>
           </Link>
         </div>

@@ -79,16 +79,16 @@ export default function DoctorsPage() {
         ))}
         {filtered.length === 0 && (
           <p className="col-span-full text-center text-muted-foreground py-8">
-            {lang === "ar" ? "ما لقيناش نتائج" : "Aucun résultat"}
+            {lang === "fr" ? "Aucun résultat" : "No results"}
           </p>
         )}
       </section>
 
       <Card className="p-6 bg-amber-50 dark:bg-amber-950/30 border-amber-200 dark:border-amber-900 text-center">
         <p className="text-sm text-amber-900 dark:text-amber-100">
-          {lang === "ar"
-            ? "💡 إيلا حسيتي بأي تغيير ف صدرك، ماتترددي - شوفي الطبيب فالقريب. الكشف المبكر كينقذ الحياة."
-            : "💡 Si vous ressentez le moindre changement, n'hésitez pas — consultez rapidement. La détection précoce sauve des vies."}
+          {lang === "fr"
+            ? "💡 Si vous ressentez le moindre changement, n'hésitez pas — consultez rapidement. La détection précoce sauve des vies."
+            : "💡 If you feel the slightest change, don't hesitate — see a doctor soon. Early detection saves lives."}
         </p>
       </Card>
     </div>

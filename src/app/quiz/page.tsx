@@ -72,9 +72,9 @@ export default function QuizPage() {
           </Button>
         </div>
         <Card className="mt-8 p-4 text-sm text-zinc-600 dark:text-zinc-300 bg-zinc-50 dark:bg-zinc-900 border-rose-100 dark:border-rose-950">
-          🔒 {lang === "ar"
-            ? "إجاباتك خاصة وما كاتنحفظ. الذكاء الاصطناعي كيحللهم لحظياً وكنمحيهم."
-            : "Vos réponses sont privées et ne sont pas stockées. L'IA les analyse en direct."}
+          🔒 {lang === "fr"
+            ? "Vos réponses sont privées et ne sont pas stockées. L'IA les analyse en direct."
+            : "Your answers are private and not stored. The AI analyzes them in real time."}
         </Card>
       </div>
     );
@@ -91,9 +91,9 @@ export default function QuizPage() {
 
   if (result) {
     const config = {
-      low: { color: "from-emerald-500 to-green-500", bg: "from-emerald-50 to-green-50", icon: CheckCircle2, label: lang === "ar" ? "منخفض" : "Faible" },
-      moderate: { color: "from-amber-500 to-orange-500", bg: "from-amber-50 to-orange-50", icon: AlertTriangle, label: lang === "ar" ? "متوسط" : "Modéré" },
-      high: { color: "from-rose-500 to-red-500", bg: "from-rose-50 to-red-50", icon: AlertCircle, label: lang === "ar" ? "مرتفع" : "Élevé" },
+      low: { color: "from-emerald-500 to-green-500", bg: "from-emerald-50 to-green-50", icon: CheckCircle2, label: lang === "fr" ? "Faible" : "Low" },
+      moderate: { color: "from-amber-500 to-orange-500", bg: "from-amber-50 to-orange-50", icon: AlertTriangle, label: lang === "fr" ? "Modéré" : "Moderate" },
+      high: { color: "from-rose-500 to-red-500", bg: "from-rose-50 to-red-50", icon: AlertCircle, label: lang === "fr" ? "Élevé" : "High" },
     }[result.level] || { color: "from-rose-500 to-pink-500", bg: "from-rose-50 to-pink-50", icon: Heart, label: "" };
 
     return (
@@ -109,7 +109,7 @@ export default function QuizPage() {
             </div>
             <div>
               <Badge className={`bg-gradient-to-r ${config.color} text-white border-0`}>
-                {lang === "ar" ? "مستوى المخاطر: " : "Niveau de risque : "}{config.label}
+                {lang === "fr" ? "Niveau de risque : " : "Risk level: "}{config.label}
               </Badge>
               <h2 className="text-2xl font-bold mt-1">{result.title}</h2>
             </div>
@@ -123,7 +123,7 @@ export default function QuizPage() {
           <Card className="p-6">
             <h3 className="font-bold mb-3 flex items-center gap-2">
               <Heart className="h-5 w-5 text-rose-500 fill-rose-500" />
-              {lang === "ar" ? "نصائح خاصة بيك" : "Conseils personnalisés"}
+              {lang === "fr" ? "Conseils personnalisés" : "Personalized advice"}
             </h3>
             <ul className="space-y-2">
               {result.advice.map((a, i) => (
@@ -143,7 +143,7 @@ export default function QuizPage() {
             ) : (
               <AlertTriangle className="h-5 w-5 text-amber-600" />
             )}
-            {lang === "ar" ? "الخطوة التالية" : "Prochaine étape"}
+            {lang === "fr" ? "Prochaine étape" : "Next step"}
           </h3>
           <p className="text-sm md:text-base">{result.next_step}</p>
         </Card>
@@ -152,23 +152,23 @@ export default function QuizPage() {
           {(result.urgent || result.level === "high") && (
             <Link href="/doctors">
               <Button className="bg-rose-600 hover:bg-rose-700 rounded-full shadow-lg">
-                {lang === "ar" ? "📞 شوفي طبيبة دابا" : "📞 Voir un médecin"}
+                {lang === "fr" ? "📞 Voir un médecin" : "📞 See a doctor"}
               </Button>
             </Link>
           )}
           <Link href="/chat">
             <Button className="bg-rose-500 hover:bg-rose-600 rounded-full">
-              {lang === "ar" ? "هضري مع لالة" : "Parler à Lalla"}
+              {lang === "fr" ? "Parler à Lalla" : "Talk to Lalla"}
             </Button>
           </Link>
           <Link href="/check">
             <Button variant="outline" className="rounded-full">
-              {lang === "ar" ? "الفحص الذاتي" : "Auto-examen"}
+              {lang === "fr" ? "Auto-examen" : "Self-exam"}
             </Button>
           </Link>
           <Link href="/reminder">
             <Button variant="outline" className="rounded-full">
-              {lang === "ar" ? "🔔 فعّلي التذكير" : "🔔 Activer le rappel"}
+              {lang === "fr" ? "🔔 Activer le rappel" : "🔔 Enable reminder"}
             </Button>
           </Link>
           <Button
@@ -181,7 +181,7 @@ export default function QuizPage() {
             }}
             className="rounded-full"
           >
-            {lang === "ar" ? "عاودي الاختبار" : "Refaire le test"}
+            {lang === "fr" ? "Refaire le test" : "Retake the test"}
           </Button>
         </div>
       </div>
@@ -234,10 +234,10 @@ export default function QuizPage() {
           className="rounded-full"
         >
           {dir === "rtl" ? <ChevronRight className="me-1 h-4 w-4" /> : <ChevronLeft className="me-1 h-4 w-4" />}
-          {lang === "ar" ? "السابق" : "Précédent"}
+          {lang === "fr" ? "Précédent" : "Previous"}
         </Button>
         <span className="text-sm text-muted-foreground self-center">
-          {lang === "ar" ? "اختاري جواب" : "Choisissez une réponse"}
+          {lang === "fr" ? "Choisissez une réponse" : "Choose an answer"}
         </span>
       </div>
     </div>
