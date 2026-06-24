@@ -2,6 +2,8 @@
 
 import { useLang } from "@/lib/language";
 import { Logo } from "@/components/Logo";
+import Link from "next/link";
+import { Stethoscope } from "lucide-react";
 
 export function Footer() {
   const { t } = useLang();
@@ -12,6 +14,10 @@ export function Footer() {
         <span>{t.footer}</span>
       </p>
       <p className="text-xs opacity-70 max-w-md mx-auto">{t.common.disclaimer}</p>
+      <Link href="/clinician" className="inline-flex items-center gap-1.5 text-xs text-indigo-600 dark:text-indigo-300 hover:underline">
+        <Stethoscope className="h-3.5 w-3.5" />
+        {t.nav.clinician}
+      </Link>
       <p className="text-xs opacity-50">© 2026 Lalla AI</p>
     </footer>
   );

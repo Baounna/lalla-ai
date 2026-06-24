@@ -4,7 +4,7 @@ type Translation = {
   appName: string;
   tagline: string;
   hero: { title: string; subtitle: string; cta: string; learn: string };
-  nav: { home: string; chat: string; check: string; visual: string; screening: string; quiz: string; learn: string; doctors: string; reminder: string };
+  nav: { home: string; chat: string; check: string; visual: string; screening: string; quiz: string; learn: string; doctors: string; reminder: string; clinician: string };
   features: {
     chat: { title: string; desc: string };
     check: { title: string; desc: string };
@@ -191,6 +191,7 @@ export const translations: Record<Lang, Translation> = {
       learn: "Learn",
       doctors: "Centers",
       reminder: "Reminder",
+      clinician: "For clinicians",
     },
     features: {
       chat: {
@@ -558,6 +559,7 @@ export const translations: Record<Lang, Translation> = {
       learn: "Apprendre",
       doctors: "Médecin",
       reminder: "Rappel",
+      clinician: "Professionnels",
     },
     features: {
       chat: {

@@ -20,6 +20,7 @@ export function Header() {
     { href: "/learn", label: t.nav.learn },
     { href: "/doctors", label: t.nav.doctors },
     { href: "/reminder", label: t.nav.reminder },
+    { href: "/clinician", label: t.nav.clinician },
   ];
 
   // Desktop bar shows the core journey; the rest live in the mobile menu to avoid crowding.
