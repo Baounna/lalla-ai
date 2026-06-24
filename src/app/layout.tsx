@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     "early detection",
     "breast cancer awareness",
   ],
-  authors: [{ name: "The Da Vinci Code" }],
+  authors: [{ name: "Lalla AI" }],
   openGraph: {
     title: "Lalla AI · Interactive 3D Breast Self-Exam",
     description:

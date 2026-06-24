@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "Lalla AI - Code for Health";
+export const alt = "Lalla AI — Interactive breast self-exam & awareness";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -37,7 +37,7 @@ export default function OGImage() {
             fontWeight: 600,
           }}
         >
-          ❤️ The Da Vinci Code
+          🎀 Early detection saves lives
         </div>
 
         <div
@@ -91,7 +91,7 @@ export default function OGImage() {
             marginBottom: 8,
           }}
         >
-          Code for Health · Build for Impact
+          Breast cancer awareness & early detection
         </div>
 
         <div
@@ -99,9 +99,10 @@ export default function OGImage() {
             fontSize: 26,
             color: "#71717a",
             textAlign: "center",
+            maxWidth: 1000,
           }}
         >
-          AI breast cancer awareness for Moroccan women · in Darija
+          Interactive 3D self-exam · Mammogram simulator · AI companion
         </div>
 
         <div
@@ -114,10 +115,10 @@ export default function OGImage() {
             color: "#a1a1aa",
           }}
         >
-          <div>💬 Lalla Chat</div>
-          <div>📋 Self-check</div>
-          <div>📊 Risk Quiz</div>
-          <div>🔔 Reminder</div>
+          <div>🧊 3D Self-Exam</div>
+          <div>🩻 Mammogram Sim</div>
+          <div>📷 Visual Check</div>
+          <div>💬 AI Companion</div>
         </div>
       </div>
     ),
