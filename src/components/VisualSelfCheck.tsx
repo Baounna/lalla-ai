@@ -5,12 +5,16 @@ import { PoseLandmarker, FilesetResolver } from "@mediapipe/tasks-vision";
 import { useLang } from "@/lib/language";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Camera, CameraOff, ChevronLeft, ChevronRight, Download, Lock, ShieldCheck, RefreshCw, CheckCircle2, AlertCircle, Cpu, Loader2 } from "lucide-react";
+import { Camera, CameraOff, ChevronLeft, ChevronRight, Download, Lock, ShieldCheck, RefreshCw, CheckCircle2, AlertCircle, Cpu, Loader2, Activity } from "lucide-react";
 import Link from "next/link";
 
 type Pt = { x: number; y: number; score: number };
 type KMap = Record<string, Pt | undefined>;
 type Status = "none" | "ok" | "raise" | "lower" | "hips";
+type Analysis = { sym: number; conf: number; left: number; right: number };
+type Shot = { url: string; a: Analysis | null } | null;
+
+const clamp = (n: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, n));
 
 // BlazePose (33-landmark) indices we use
 const LM: Record<string, number> = {
@@ -60,11 +64,12 @@ export function VisualSelfCheck() {
   const rafRef = useRef<number | null>(null);
   const lastTsRef = useRef(0);
   const stepRef = useRef(0);
+  const latestPtsRef = useRef<Pt[] | null>(null);
 
   const [stage, setStage] = useState<"intro" | "live" | "done">("intro");
   const [step, setStep] = useState(0);
   const [error, setError] = useState<null | "denied" | "unsupported">(null);
-  const [shots, setShots] = useState<(string | null)[]>([null, null, null]);
+  const [shots, setShots] = useState<Shot[]>([null, null, null]);
   const [modelLoading, setModelLoading] = useState(true);
   const [status, setStatus] = useState<Status>("none");
 
@@ -81,6 +86,28 @@ export function VisualSelfCheck() {
     const m: KMap = {};
     for (const name in LM) m[name] = pts[LM[name]];
     return m;
+  };
+
+  // Geometric left/right symmetry from landmarks (educational — NOT a cancer probability).
+  const analyze = (pts: Pt[]): Analysis | null => {
+    const k = toMap(pts);
+    if (!ok(k.left_shoulder) || !ok(k.right_shoulder)) return null;
+    const ls = k.left_shoulder!, rs = k.right_shoulder!;
+    const sw = dist(ls, rs) || 1;
+    const midX = (ls.x + rs.x) / 2;
+    const L = Math.abs(ls.x - midX), R = Math.abs(rs.x - midX);
+    const widthBalance = Math.min(L, R) / (Math.max(L, R) || 1);
+    const tilt = Math.abs(ls.y - rs.y) / sw;
+    const tiltScore = 1 - Math.min(tilt, 0.3) / 0.3;
+    let hipBal = 1;
+    if (ok(k.left_hip) && ok(k.right_hip)) {
+      const Lh = Math.abs(k.left_hip!.x - midX), Rh = Math.abs(k.right_hip!.x - midX);
+      hipBal = Math.min(Lh, Rh) / (Math.max(Lh, Rh) || 1);
+    }
+    const sym = clamp(Math.round((widthBalance * 0.45 + tiltScore * 0.35 + hipBal * 0.2) * 100), 0, 100);
+    const keys = ["left_shoulder", "right_shoulder", "left_hip", "right_hip", "nose"];
+    const conf = Math.round((keys.reduce((s, n) => s + (k[n]?.score ?? 0), 0) / keys.length) * 100);
+    return { sym, conf, left: Math.round(L), right: Math.round(R) };
   };
 
   const draw = useCallback((pts: Pt[] | null) => {
@@ -137,6 +164,7 @@ export function VisualSelfCheck() {
         const res = det.detectForVideo(video, ts);
         const lm = res.landmarks?.[0];
         const pts: Pt[] | null = lm ? lm.map((l) => ({ x: (1 - l.x) * video.videoWidth, y: l.y * video.videoHeight, score: l.visibility ?? 1 })) : null;
+        latestPtsRef.current = pts;
         draw(pts);
         if (pts) {
           const k = toMap(pts);
@@ -188,7 +216,9 @@ export function VisualSelfCheck() {
     if (!ctx) return;
     ctx.translate(canvas.width, 0); ctx.scale(-1, 1);
     ctx.drawImage(v, 0, 0);
-    setShots((s) => s.map((x, i) => (i === step ? canvas.toDataURL("image/jpeg", 0.85) : x)));
+    const url = canvas.toDataURL("image/jpeg", 0.85);
+    const a = latestPtsRef.current ? analyze(latestPtsRef.current) : null;
+    setShots((s) => s.map((x, i) => (i === step ? { url, a } : x)));
   }
 
   const pose = fr ? POSES[step].fr : POSES[step].en;
@@ -199,6 +229,58 @@ export function VisualSelfCheck() {
     hips: fr ? "Posez les mains sur les hanches" : "Put your hands on your hips",
     none: fr ? "Reculez pour que le haut du corps soit visible" : "Step back so your upper body is visible",
   }[status];
+
+  const bar = (v: number) => (v >= 85 ? "bg-emerald-500" : v >= 70 ? "bg-amber-500" : "bg-rose-500");
+  const renderAnalysis = (a: Analysis) => {
+    const maxLR = Math.max(a.left, a.right) || 1;
+    const reading =
+      a.sym >= 88
+        ? fr ? "Symétrie élevée. Une légère asymétrie naturelle est normale." : "High symmetry. Some natural asymmetry is normal."
+        : a.sym >= 75
+        ? fr ? "Légère différence gauche/droite sur cette image (posture/cadrage). Souvent normal — surveillez tout NOUVEAU changement." : "Minor left/right difference in this frame (posture/framing). Usually normal — watch for any NEW change."
+        : fr ? "Différence notable sur cette image — souvent due à l'angle. Si un changement d'un côté est nouveau ou persistant, consultez." : "Noticeable difference in this frame — often due to angle. If a one-sided change is new or persistent, see a doctor.";
+    return (
+      <Card className="p-5 border-rose-100 dark:border-rose-950 space-y-3">
+        <div className="flex items-center gap-2 text-sm font-semibold">
+          <Activity className="h-4 w-4 text-rose-500" />
+          {fr ? "Analyse de la photo" : "Snapshot analysis"}
+          <span className="text-xs font-normal text-zinc-400">{fr ? "(cette image)" : "(this frame)"}</span>
+        </div>
+
+        <div className="grid grid-cols-2 gap-4">
+          <div>
+            <div className="flex justify-between text-xs mb-1"><span className="text-zinc-500">{fr ? "Symétrie" : "Symmetry"}</span><span className="font-bold">{a.sym}%</span></div>
+            <div className="h-2 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden"><div className={`h-full ${bar(a.sym)}`} style={{ width: `${a.sym}%` }} /></div>
+          </div>
+          <div>
+            <div className="flex justify-between text-xs mb-1"><span className="text-zinc-500">{fr ? "Confiance IA" : "AI confidence"}</span><span className="font-bold">{a.conf}%</span></div>
+            <div className="h-2 rounded-full bg-zinc-100 dark:bg-zinc-800 overflow-hidden"><div className={`h-full ${bar(a.conf)}`} style={{ width: `${a.conf}%` }} /></div>
+          </div>
+        </div>
+
+        <div>
+          <p className="text-xs text-zinc-500 mb-1.5">{fr ? "Équilibre gauche / droite" : "Left / right balance"}</p>
+          <div className="flex items-end gap-2 h-12">
+            <div className="flex-1 flex flex-col items-center justify-end h-full">
+              <div className="w-full rounded-t bg-rose-400" style={{ height: `${(a.left / maxLR) * 100}%` }} />
+              <span className="text-[10px] text-zinc-400 mt-1">{fr ? "Gauche" : "Left"}</span>
+            </div>
+            <div className="flex-1 flex flex-col items-center justify-end h-full">
+              <div className="w-full rounded-t bg-pink-400" style={{ height: `${(a.right / maxLR) * 100}%` }} />
+              <span className="text-[10px] text-zinc-400 mt-1">{fr ? "Droite" : "Right"}</span>
+            </div>
+          </div>
+        </div>
+
+        <p className="text-sm text-zinc-600 dark:text-zinc-300">{reading}</p>
+        <p className="text-[11px] text-zinc-400 border-t border-zinc-100 dark:border-zinc-800 pt-2">
+          {fr
+            ? "Estimation géométrique à partir des points du corps — ce n'est pas un diagnostic ni une probabilité de cancer. Seul un médecin peut évaluer un changement du sein."
+            : "Geometric estimate from body landmarks — not a diagnosis or a cancer probability. Only a doctor can assess a breast change."}
+        </p>
+      </Card>
+    );
+  };
 
   if (stage === "intro") {
     return (
@@ -239,10 +321,16 @@ export function VisualSelfCheck() {
             const pp = fr ? p.fr : p.en;
             return (
               <div key={i} className="rounded-xl border border-rose-100 dark:border-rose-950 p-4 bg-white dark:bg-zinc-900">
-                {shots[i] && (/* eslint-disable-next-line @next/next/no-img-element */ <img src={shots[i] as string} alt="" className="w-full h-32 object-cover rounded-lg mb-3" />)}
+                {shots[i] && (/* eslint-disable-next-line @next/next/no-img-element */ <img src={shots[i]!.url} alt="" className="w-full h-32 object-cover rounded-lg mb-3" />)}
                 <h3 className="font-semibold text-sm mb-2">{pp.title}</h3>
+                {shots[i]?.a && (
+                  <div className="flex gap-3 mb-2 text-[11px] text-zinc-500 dark:text-zinc-400">
+                    <span>{fr ? "Symétrie" : "Symmetry"} <b className="text-zinc-700 dark:text-zinc-200">{shots[i]!.a!.sym}%</b></span>
+                    <span>{fr ? "IA" : "AI"} <b className="text-zinc-700 dark:text-zinc-200">{shots[i]!.a!.conf}%</b></span>
+                  </div>
+                )}
                 <ul className="space-y-1">{pp.look.map((l) => <li key={l} className="text-xs text-zinc-500 dark:text-zinc-400 flex gap-1.5"><span className="text-rose-400 mt-0.5">•</span>{l}</li>)}</ul>
-                {shots[i] && <a href={shots[i] as string} download={`visual-check-${i + 1}.jpg`} className="mt-3 inline-flex items-center gap-1 text-xs text-rose-500 hover:underline"><Download className="h-3 w-3" /> {fr ? "Télécharger" : "Download"}</a>}
+                {shots[i] && <a href={shots[i]!.url} download={`visual-check-${i + 1}.jpg`} className="mt-3 inline-flex items-center gap-1 text-xs text-rose-500 hover:underline"><Download className="h-3 w-3" /> {fr ? "Télécharger" : "Download"}</a>}
               </div>
             );
           })}
@@ -299,6 +387,8 @@ export function VisualSelfCheck() {
           <ul className="space-y-1">{pose.look.map((l) => <li key={l} className="text-sm text-zinc-600 dark:text-zinc-300 flex gap-2"><span className="text-rose-400 mt-0.5">•</span>{l}</li>)}</ul>
         </div>
       </Card>
+
+      {shots[step]?.a && renderAnalysis(shots[step]!.a)}
 
       <div className="flex items-center justify-between gap-3">
         <Button variant="outline" onClick={() => setStep((s) => Math.max(0, s - 1))} disabled={step === 0} className="rounded-full"><ChevronLeft className="me-1 h-4 w-4" /> {fr ? "Précédent" : "Back"}</Button>
