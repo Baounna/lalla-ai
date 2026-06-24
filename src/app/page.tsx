@@ -54,8 +54,11 @@ export default function Home() {
       icon: Building2,
       color: "from-blue-500 to-rose-500",
       data: {
-        title: t.doctors.title,
-        desc: t.doctors.subtitle,
+        title: lang === "fr" ? "Dépistage & soutien" : "Screening & support",
+        desc:
+          lang === "fr"
+            ? "Lignes d'assistance internationales et recherche d'un centre près de chez vous"
+            : "International helplines and find a screening center near you",
       },
     },
   ];

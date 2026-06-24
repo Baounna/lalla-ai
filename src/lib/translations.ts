@@ -427,7 +427,7 @@ export const translations: Record<Lang, Translation> = {
         title: "Women die because life-saving information doesn't reach them in time",
         stats: [
           { value: "2.3M", label: "new cases worldwide / year" },
-          { value: "36%", label: "of cancers in women (Morocco)" },
+          { value: "1 in 8", label: "women — lifetime risk" },
           { value: "70%", label: "diagnosed too late" },
         ],
         body: "Breast cancer is the most common cancer in women worldwide. But the core problem often isn't treatment — it's that clear, trusted guidance doesn't reach women in a form they trust. Most tools are clinical and intimidating. The result: too many women are diagnosed late, when treatment is hardest. Lalla started in Morocco — and the same idea serves women everywhere.",
@@ -795,7 +795,7 @@ export const translations: Record<Lang, Translation> = {
         title: "Des femmes meurent car l'information vitale ne les atteint pas à temps",
         stats: [
           { value: "2.3M", label: "nouveaux cas dans le monde / an" },
-          { value: "36%", label: "des cancers féminins (Maroc)" },
+          { value: "1 sur 8", label: "femmes — risque à vie" },
           { value: "70%", label: "diagnostiqués trop tard" },
         ],
         body: "Le cancer du sein est le cancer le plus fréquent chez les femmes dans le monde. Le vrai problème n'est souvent pas le traitement — c'est que des conseils clairs et fiables n'atteignent pas les femmes sous une forme accessible. La plupart des outils sont cliniques et intimidants. Résultat : trop de femmes sont diagnostiquées tard, quand le traitement est le plus difficile. Lalla est née au Maroc — et la même idée sert les femmes partout.",
