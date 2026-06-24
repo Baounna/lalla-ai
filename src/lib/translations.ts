@@ -4,7 +4,7 @@ type Translation = {
   appName: string;
   tagline: string;
   hero: { title: string; subtitle: string; cta: string; learn: string };
-  nav: { home: string; chat: string; check: string; quiz: string; learn: string; doctors: string; reminder: string };
+  nav: { home: string; chat: string; check: string; screening: string; quiz: string; learn: string; doctors: string; reminder: string };
   features: {
     chat: { title: string; desc: string };
     check: { title: string; desc: string };
@@ -185,6 +185,7 @@ export const translations: Record<Lang, Translation> = {
       home: "Home",
       chat: "Talk to Lalla",
       check: "Self-exam",
+      screening: "Screening",
       quiz: "Risk check",
       learn: "Learn",
       doctors: "Centers",
@@ -550,6 +551,7 @@ export const translations: Record<Lang, Translation> = {
       home: "Accueil",
       chat: "Parler à Lalla",
       check: "Auto-examen",
+      screening: "Dépistage",
       quiz: "Évaluation",
       learn: "Apprendre",
       doctors: "Médecin",

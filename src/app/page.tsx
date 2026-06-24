@@ -2,18 +2,30 @@
 
 import Link from "next/link";
 import { useLang } from "@/lib/language";
-import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell } from "lucide-react";
+import { MessageCircle, ListChecks, ClipboardCheck, BookOpen, Sparkles, Shield, Users, Building2, Bell, ScanLine } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ShareCard } from "@/components/ShareCard";
 import { Logo } from "@/components/Logo";
 
 export default function Home() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
 
   const features = [
     { href: "/chat", icon: MessageCircle, color: "from-rose-500 to-pink-500", data: t.features.chat },
     { href: "/check", icon: ListChecks, color: "from-pink-500 to-fuchsia-500", data: t.features.check },
+    {
+      href: "/screening",
+      icon: ScanLine,
+      color: "from-rose-500 to-fuchsia-500",
+      data: {
+        title: lang === "fr" ? "Mammographie & rayons X" : "Mammogram & X-ray",
+        desc:
+          lang === "fr"
+            ? "Comprenez le dépistage par mammographie et simulez l'effet de la densité du sein"
+            : "Understand mammogram screening and simulate how breast density hides findings",
+      },
+    },
     { href: "/quiz", icon: ClipboardCheck, color: "from-fuchsia-500 to-purple-500", data: t.features.quiz },
     { href: "/learn", icon: BookOpen, color: "from-purple-500 to-indigo-500", data: t.features.learn },
     {
