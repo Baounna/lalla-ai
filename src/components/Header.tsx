@@ -25,6 +25,7 @@ export function Header() {
     { href: "/doctors", label: t.nav.doctors },
     { href: "/reminder", label: t.nav.reminder },
     { href: "/clinician", label: t.nav.clinician },
+    { href: "/research", label: lang === "fr" ? "IA / Recherche" : "AI / Research" },
   ];
 
   // Desktop bar shows the core journey; the rest live in the mobile menu to avoid crowding.

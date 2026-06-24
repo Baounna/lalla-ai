@@ -1,0 +1,9 @@
+{
+  "accuracy": 0.8076923076923077,
+  "roc_auc": 0.8694653299916458,
+  "sensitivity_malignant": 0.8333333333333334,
+  "specificity_benign_normal": 0.7982456140350878,
+  "decision_threshold": 0.7538440823554993,
+  "dataset": "BreastMNIST (MedMNIST v2) \u2014 breast ULTRASOUND, 28x28 grayscale",
+  "n_test": 156
+}
