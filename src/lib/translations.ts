@@ -816,7 +816,7 @@ export const translations: Record<Lang, Translation> = {
         title: "Avant de coder, on a réfléchi",
         body: "Ce n'est pas un projet improvisé. Avant la première ligne de code, on a défini 4 principes de conception. Tout dans Lalla en découle.",
         principles: [
-          { num: "01", title: "L'utilisatrice avant la technologie", desc: "Conçu pour des vraies femmes marocaines, pas des utilisateurs imaginaires." },
+          { num: "01", title: "L'utilisatrice avant la technologie", desc: "Conçu pour de vraies femmes, partout, pas des utilisateurs imaginaires." },
           { num: "02", title: "Leur langue, d'abord", desc: "Pas une traduction approximative. Écrit nativement dans chaque langue." },
           { num: "03", title: "Confidentialité par conception", desc: "Pas de base de données. Aucune réponse stockée. Zéro donnée personnelle." },
           { num: "04", title: "Éduquer, pas diagnostiquer", desc: "L'IA est explicitement interdite de diagnostiquer. Toujours orienter vers un médecin." },
@@ -835,9 +835,9 @@ export const translations: Record<Lang, Translation> = {
           { num: "01", title: "Chat avec Lalla (IA)", desc: "Conversation avec IA, entrée vocale, répond à toutes vos questions" },
           { num: "02", title: "Auto-examen guidé", desc: "7 étapes simples avec explications visuelles, pour faire l'examen chez vous" },
           { num: "03", title: "Évaluation du risque", desc: "7 questions + IA qui évalue votre risque et donne des conseils personnalisés" },
-          { num: "04", title: "Sensibilisation", desc: "Informations fiables, mythes et vérités, statistiques marocaines" },
+          { num: "04", title: "Sensibilisation", desc: "Informations fiables, mythes et vérités, statistiques mondiales" },
           { num: "05", title: "Rappel mensuel", desc: "Intégration calendrier (Google/Apple) pour ne jamais oublier" },
-          { num: "06", title: "Centres à proximité", desc: "Principaux centres d'oncologie au Maroc, appel direct en un clic" },
+          { num: "06", title: "Dépistage & soutien", desc: "Lignes d'assistance internationales et recherche de centres en un clic" },
         ],
       },
       innovation: {
