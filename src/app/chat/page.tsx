@@ -189,7 +189,7 @@ export default function ChatPage() {
           <Sparkles className="h-4 w-4" />
           {t.appName}
         </div>
-        <h1 className="text-3xl md:text-4xl font-bold mb-2 bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-4xl font-bold mb-2 text-zinc-900 dark:text-white">
           {t.chat.title}
         </h1>
       </div>

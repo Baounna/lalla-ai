@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Layers, Microscope, BookOpen } from "lucide-react";
 import Link from "next/link";
+import { ReviewedNote } from "@/components/ReviewedNote";
 
 export default function TypesPage() {
   const { lang } = useLang();
@@ -34,7 +35,7 @@ export default function TypesPage() {
           <Layers className="h-4 w-4" />
           {fr ? "Comprendre · types & stades" : "Understand · types & stages"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Types et stades du cancer du sein" : "Types & stages of breast cancer"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
@@ -42,6 +43,7 @@ export default function TypesPage() {
             ? "« Stade » indique l'étendue du cancer ; « type » indique quelles cellules sont touchées. Plus c'est détecté tôt, meilleur est le pronostic."
             : "“Stage” describes how far the cancer has spread; “type” describes which cells are involved. The earlier it's found, the better the outlook."}
         </p>
+        <div className="flex justify-center"><ReviewedNote /></div>
       </header>
 
       {/* Stages ladder */}

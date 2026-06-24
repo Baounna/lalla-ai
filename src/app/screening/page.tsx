@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { ScanLine, Sparkles, ShieldCheck, Clock, Layers, Radiation, CalendarCheck, BookOpen } from "lucide-react";
 import Link from "next/link";
+import { ReviewedNote } from "@/components/ReviewedNote";
 import dynamic from "next/dynamic";
 
 const MammogramSimulator = dynamic(() => import("@/components/MammogramSimulator"), {
@@ -62,7 +63,7 @@ export default function ScreeningPage() {
           <Radiation className="h-4 w-4" />
           {fr ? "Mammographie · Dépistage par rayons X" : "Mammography · X-ray screening"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Le dépistage par mammographie" : "Mammography screening"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
@@ -70,6 +71,7 @@ export default function ScreeningPage() {
             ? "La mammographie est l'examen de référence pour détecter un cancer du sein avant qu'il ne se sente. Voici comment ça marche — et pourquoi la densité du sein compte."
             : "A mammogram is the gold-standard test to catch breast cancer before it can be felt. Here's how it works — and why breast density matters."}
         </p>
+        <div className="flex justify-center"><ReviewedNote /></div>
       </section>
 
       {/* What is a mammogram */}

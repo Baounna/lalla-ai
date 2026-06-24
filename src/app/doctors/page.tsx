@@ -25,7 +25,7 @@ export default function DoctorsPage() {
           <HeartHandshake className="h-4 w-4" />
           {fr ? "Dépistage & soutien" : "Screening & support"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 via-pink-600 to-fuchsia-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Trouver de l'aide près de chez vous" : "Find screening & support near you"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">

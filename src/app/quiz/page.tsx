@@ -58,7 +58,7 @@ export default function QuizPage() {
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-fuchsia-500 to-purple-500 text-white shadow-xl mb-2">
           <ClipboardCheck className="h-10 w-10" />
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-fuchsia-600 to-purple-600 bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white">
           {t.quiz.title}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300">{t.quiz.subtitle}</p>

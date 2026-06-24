@@ -97,7 +97,7 @@ END:VCALENDAR`;
         <div className="inline-flex items-center justify-center w-20 h-20 rounded-2xl bg-gradient-to-br from-rose-500 to-pink-500 text-white shadow-xl mb-2">
           {enabled ? <BellRing className="h-10 w-10" /> : <Bell className="h-10 w-10" />}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {t.reminder.title}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300">{t.reminder.subtitle}</p>

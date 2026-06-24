@@ -32,7 +32,7 @@ export default function ClinicianPage() {
           <Stethoscope className="h-4 w-4" />
           {fr ? "Pour les professionnels de santé" : "For healthcare professionals"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-indigo-600 to-rose-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Aide à la décision clinique" : "Clinical decision support"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">

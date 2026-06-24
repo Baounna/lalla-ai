@@ -5,6 +5,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { AlertCircle, Eye } from "lucide-react";
 import Link from "next/link";
+import { ReviewedNote } from "@/components/ReviewedNote";
 
 /* Original, tasteful illustrations of the 12 warning signs, drawn on a soft circle
    (inspired by the globally-recognized "know your signs" visual format). */
@@ -61,7 +62,7 @@ export default function SignsPage() {
           <Eye className="h-4 w-4" />
           {fr ? "Connaître les signes · sauver des vies" : "Know the signs · save lives"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Les 12 signes du cancer du sein" : "The 12 signs of breast cancer"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
@@ -69,6 +70,7 @@ export default function SignsPage() {
             ? "Un cancer du sein ne se manifeste pas que par une masse. Voici 12 changements à connaître — si vous en remarquez un, consultez un médecin."
             : "Breast cancer isn't only a lump. Here are 12 changes to know — if you notice any of them, see a doctor."}
         </p>
+        <div className="flex justify-center"><ReviewedNote /></div>
       </header>
 
       <section className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">

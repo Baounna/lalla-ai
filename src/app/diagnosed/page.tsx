@@ -170,7 +170,7 @@ export default function DiagnosedPage() {
           <Heart className="h-4 w-4" />
           {fr ? "Nouveau diagnostic · Vous n'êtes pas seule" : "Newly diagnosed · You're not alone"}
         </div>
-        <h1 className="text-3xl md:text-5xl font-bold bg-gradient-to-br from-rose-600 to-pink-600 bg-clip-text text-transparent leading-tight">
+        <h1 className="text-3xl md:text-5xl font-bold text-zinc-900 dark:text-white leading-tight">
           {fr ? "Vous venez d'être diagnostiquée ? Voici la suite" : "Just diagnosed? Here's what's next"}
         </h1>
         <p className="text-lg text-zinc-600 dark:text-zinc-300 max-w-2xl mx-auto">
