@@ -3,7 +3,7 @@
 import { useLang } from "@/lib/language";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { BookOpen, Phone, MapPin, Calendar, Heart, Sparkles, ArrowRight } from "lucide-react";
+import { BookOpen, Phone, MapPin, Calendar, Heart, Sparkles, ArrowRight, Eye, Layers, List, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 const sectionIcons = [BookOpen, Calendar, Sparkles, Heart];
@@ -44,6 +44,29 @@ export default function LearnPage() {
             </Card>
           );
         })}
+      </section>
+
+      <section className="space-y-4">
+        <h2 className="text-2xl font-bold text-center">{lang === "fr" ? "Approfondir" : "Dig deeper"}</h2>
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {[
+            { href: "/signs", icon: Eye, en: ["The 12 signs", "Warning signs to know"], fr: ["Les 12 signes", "Les signes à connaître"] },
+            { href: "/types", icon: Layers, en: ["Types & stages", "Stage 0–4 explained"], fr: ["Types & stades", "Les stades 0 à IV"] },
+            { href: "/glossary", icon: List, en: ["Glossary", "Plain-language terms"], fr: ["Glossaire", "Les termes expliqués"] },
+            { href: "/diagnosed", icon: HelpCircle, en: ["Just diagnosed?", "Next steps & questions"], fr: ["Diagnostiquée ?", "Étapes & questions"] },
+          ].map((c) => {
+            const d = lang === "fr" ? c.fr : c.en;
+            return (
+              <Link key={c.href} href={c.href}>
+                <Card className="p-5 h-full border-rose-100 dark:border-rose-950 hover:shadow-lg hover:-translate-y-0.5 transition-all">
+                  <c.icon className="h-6 w-6 text-rose-500 mb-2" />
+                  <h3 className="font-bold text-sm mb-0.5">{d[0]}</h3>
+                  <p className="text-xs text-zinc-500 dark:text-zinc-400">{d[1]}</p>
+                </Card>
+              </Link>
+            );
+          })}
+        </div>
       </section>
 
       <section className="bg-gradient-to-br from-rose-500 via-pink-500 to-fuchsia-500 rounded-3xl p-6 md:p-10 text-white shadow-2xl">
