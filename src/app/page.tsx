@@ -92,6 +92,17 @@ export default function Home() {
             </Button>
           </Link>
         </div>
+
+        <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 pt-4">
+          <span className="text-[11px] font-medium uppercase tracking-widest text-zinc-400">
+            {lang === "fr" ? "Aligné sur les références" : "Aligned with"}
+          </span>
+          {["ACS", "WHO", "BI-RADS", "NCI"].map((s) => (
+            <span key={s} className="text-xs font-semibold text-zinc-500 dark:text-zinc-400 bg-zinc-100 dark:bg-zinc-800/70 px-2.5 py-1 rounded-md">
+              {s}
+            </span>
+          ))}
+        </div>
       </section>
 
       <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">

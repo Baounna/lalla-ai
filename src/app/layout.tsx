@@ -18,7 +18,7 @@ export const metadata: Metadata = {
     template: "%s · Lalla AI",
   },
   description:
-    "An AI companion that guides women through breast self-examination with a research-grade interactive 3D guide, a mammogram density simulator, and a private camera self-check. Bilingual (English & French). Born in Morocco, designed for the world.",
+    "An AI companion that guides women through breast self-examination with a research-grade interactive 3D guide, a mammogram density simulator, and a private camera self-check. Bilingual (English & French). Built for every woman, everywhere.",
   keywords: [
     "breast cancer",
     "breast self-examination",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lalla AI · Interactive 3D Breast Self-Exam",
     description:
-      "A warm AI companion + a research-grade interactive 3D guide for breast self-examination. Bilingual (EN/FR), private, free. Born in Morocco, for every woman.",
+      "A warm AI companion + a research-grade interactive 3D guide for breast self-examination. Bilingual (EN/FR), private, free. For every woman, everywhere.",
     siteName: "Lalla AI",
     locale: "en_US",
     type: "website",
