@@ -347,7 +347,7 @@ export const translations: Record<Lang, Translation> = {
       important: "Important",
       disclaimer: "This app is educational. It does not replace a doctor.",
     },
-    footer: "Made with love by The Da Vinci Code · Vibe Coding Hackathon 2026",
+    footer: "Lalla AI · Breast cancer awareness & early detection",
     stats: {
       cancers: "women develop breast cancer in their lifetime",
       survival: "survival rate with early detection",
@@ -714,7 +714,7 @@ export const translations: Record<Lang, Translation> = {
       important: "Important",
       disclaimer: "Cette application est éducative. Elle ne remplace pas un médecin.",
     },
-    footer: "Fait avec amour par l'équipe The Da Vinci Code · Vibe Coding Hackathon 2026",
+    footer: "Lalla AI · Sensibilisation au cancer du sein & détection précoce",
     stats: {
       cancers: "femmes développeront un cancer du sein au cours de leur vie",
       survival: "taux de guérison avec détection précoce",
