@@ -357,7 +357,7 @@ export const translations: Record<Lang, Translation> = {
       forWomen: { title: "For every woman", desc: "Available in English & French" },
     },
     share: {
-      title: "Share Lalla with someone you love",
+      title: "Share with your girls 💖",
       desc: "If this app helped you, share it with your sister, mother, or friend. Information saves lives 💖",
       whatsapp: "Share on WhatsApp",
       copy: "Copy link",
@@ -722,7 +722,7 @@ export const translations: Record<Lang, Translation> = {
       forWomen: { title: "Pour toutes les femmes", desc: "En anglais et en français" },
     },
     share: {
-      title: "Partagez Lalla avec celles que vous aimez",
+      title: "Partagez avec vos copines 💖",
       desc: "Si l'app vous a aidée, partagez-la avec votre sœur, mère, amie. L'information sauve des vies 💖",
       whatsapp: "Partager sur WhatsApp",
       copy: "Copier le lien",
