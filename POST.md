@@ -4,7 +4,26 @@ Replace `LINK` with https://lalla-ai.vercel.app. Best media = a short screen rec
 
 ---
 
-## ⭐ SHORT VERSION (recommended)
+## ⭐ SMOOTH VERSION (use this one — flowing, with emojis)
+
+🌸 Meet Lalla AI — an AI companion that helps women learn breast self-examination and early detection, and actually guides you instead of handing you another leaflet.
+
+🧊 You can rotate a 3D model to follow each step of a self-exam, or 📷 turn on your camera and let an on-device AI track your posture and walk you through it — privately, with nothing ever leaving your device. 🩻 You can explore how a mammogram works through an interactive density simulator, 💬 ask a warm AI companion anything, and 🧠 even watch a real neural network read a breast-imaging scan and highlight where it's looking, right in your browser.
+
+Through all of it, I held one line: a phone can't detect cancer, so Lalla never pretends to. It educates, it guides, and it always points to a real doctor. That honesty is the whole point. 💖
+
+It's bilingual, free, private, and grounded in guidance from the ACS, WHO and BI-RADS. Early detection changes everything — survival is over 90% when breast cancer is caught early.
+
+If it helps even one person do a self-check this month, it was worth building. 🎀
+
+👉 Try it: https://lalla-ai.vercel.app
+⭐ Code: github.com/Baounna/vibehack
+
+#HealthTech #AI #WomensHealth #BreastCancerAwareness #MachineLearning
+
+---
+
+## ⭐ SHORT VERSION (punchy)
 
 🎀 I built **Lalla AI** — an AI companion that helps women learn breast self-examination and early detection.
 
